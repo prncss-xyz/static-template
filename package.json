@@ -8,14 +8,18 @@
 		"dev:tests": "vitest run --watch",
 		"build": "waku build",
 		"start": "waku start",
-		"check:knip": "knip --cache",
-		"check:eslint": "eslint",
+		"knip": "knip --cache",
 		"check:types": "tsc --noEmit",
 		"check:tests": "vitest run --coverage --passWithNoTests",
 		"check": "pnpm run '/^check:.*/'",
 		"fix:prettier": "prettier --write --cache --cache-strategy metadata .",
-		"fix:eslint": "eslint --fix",
-		"fix": "pnpm run '/^fix:.*/'"
+		"fix-ci:prettier": "prettier --check --cache --cache-strategy metadata .",
+		"fix-ci:eslint": "eslint --cache --max-warnings 0 --no-warn-ignored",
+		"fix:eslint": "eslint --cache --max-warnings 0 --no-warn-ignored --fix",
+		"fix": "pnpm run '/^fix:.*/'",
+		"fix-ci": "pnpm run '/^fix-ci:.*/'",
+		"verify": "pnpm run check && pnpm run fix && pnpm run build",
+		"verify-ci": "pnpm run check && pnpm run fix-ci"
 	},
 	"dependencies": {
 		"@stylexjs/stylex": "^0.17.4",
@@ -25,6 +29,8 @@
 		"waku": "1.0.0-alpha.0"
 	},
 	"devDependencies": {
+		"@commitlint/cli": "^20.3.0",
+		"@commitlint/config-conventional": "^20.3.0",
 		"@cspell/eslint-plugin": "^9.4.0",
 		"@eslint/js": "^9.39.2",
 		"@stylexjs/eslint-plugin": "^0.17.4",
@@ -42,6 +48,7 @@
 		"eslint-plugin-react-hooks": "^7.0.1",
 		"eslint-plugin-react-refresh": "^0.4.26",
 		"globals": "^17.0.0",
+		"husky": "^9.1.7",
 		"jsdom": "^27.4.0",
 		"knip": "^5.79.0",
 		"prettier": "^3.7.4",

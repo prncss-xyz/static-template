@@ -55,7 +55,8 @@ function getVarKeys(r: any) {
 	if (typeof r === 'string') return new Set()
 	// recipe (vanilla-extract recipe may expose variants as function or object)
 	if (r.variants) {
-		const v = typeof r.variants === 'function' ? r.variants() : Object.keys(r.variants)
+		const v =
+			typeof r.variants === 'function' ? r.variants() : Object.keys(r.variants)
 		return new Set(v)
 	}
 	// sprinkle
@@ -79,7 +80,8 @@ function core(r: ((p: object) => string) | string) {
 			const base = (r as any).className ?? r({})
 			if (base) {
 				if (!varClassName) varClassName = base
-				else if (!varClassName.includes(base)) varClassName = varClassName + ' ' + base
+				else if (!varClassName.includes(base))
+					varClassName = varClassName + ' ' + base
 			}
 		}
 		const className = props.className

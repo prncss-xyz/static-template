@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react'
 
-import './index.css'
-
 import { DevStyleXInject } from '@/DevStylexInject'
 
 import { Footer } from '../components/footer'
