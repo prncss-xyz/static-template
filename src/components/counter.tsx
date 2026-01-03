@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 
+// ensure box css is included in client bundle so styles are linked
+import './box/index.css'
+
 export const Counter = () => {
 	const [count, setCount] = useState(0)
 

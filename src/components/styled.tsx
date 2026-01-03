@@ -53,8 +53,11 @@ const coreProps = new Set(['as', 'className'])
 function getVarKeys(r: any) {
 	// className
 	if (typeof r === 'string') return new Set()
-	// recipe
-	if (r.variants) return new Set((r as any).variants())
+	// recipe (vanilla-extract recipe may expose variants as function or object)
+	if (r.variants) {
+		const v = typeof r.variants === 'function' ? r.variants() : Object.keys(r.variants)
+		return new Set(v)
+	}
 	// sprinkle
 	if (r.properties) return r.properties // TODO: do we need to bind
 	throw new Error('cannot handle this')
@@ -70,7 +73,15 @@ function core(r: ((p: object) => string) | string) {
 			if (varKeys.has(k)) varProps[k] = v
 			else elemProps[k] = v
 		}
-		const varClassName = typeof r === 'string' ? r : r(varProps)
+		let varClassName = typeof r === 'string' ? r : r(varProps)
+		// ensure the recipe base/class is included; some vanilla-extract recipes expose a className
+		if (typeof r !== 'string') {
+			const base = (r as any).className ?? r({})
+			if (base) {
+				if (!varClassName) varClassName = base
+				else if (!varClassName.includes(base)) varClassName = varClassName + ' ' + base
+			}
+		}
 		const className = props.className
 			? varClassName + ' ' + props.className
 			: varClassName
