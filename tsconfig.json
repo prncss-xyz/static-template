@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"target": "esnext",
+		"noEmit": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"downlevelIteration": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"types": ["vitest/importMeta", "vitest/globals"],
+		"moduleResolution": "bundler",
+		"skipLibCheck": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	},
+	"include": ["src", "declarations.d.ts", "eslint.config.js"]
+}
