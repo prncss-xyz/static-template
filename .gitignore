@@ -4,5 +4,7 @@ dist
 .env*
 *.tsbuildinfo
 .cache
+.eslintcache
+.turbo
 .DS_Store
 *.pem

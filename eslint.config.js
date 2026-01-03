@@ -7,6 +7,7 @@ import react from 'eslint-plugin-react'
 import reactCompiler from 'eslint-plugin-react-compiler'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
+import turboPlugin from 'eslint-plugin-turbo'
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import tsESLint from 'typescript-eslint'
@@ -32,6 +33,14 @@ export default defineConfig(
 			'@stylexjs/sort-keys': 'warn',
 			'@stylexjs/valid-shorthands': 'warn',
 			'@stylexjs/valid-styles': 'error',
+		},
+	},
+	{
+		plugins: {
+			turbo: turboPlugin,
+		},
+		rules: {
+			'turbo/no-undeclared-env-vars': 'warn',
 		},
 	},
 	{
