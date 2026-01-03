@@ -1,5 +1,6 @@
 import cspell from '@cspell/eslint-plugin'
 import jsLint from '@eslint/js'
+import stylex from '@stylexjs/eslint-plugin'
 import onlyWarn from 'eslint-plugin-only-warn'
 import perfectionist from 'eslint-plugin-perfectionist'
 import react from 'eslint-plugin-react'
@@ -24,6 +25,17 @@ export default defineConfig(
 	jsLint.configs.recommended,
 	{
 		plugins: {
+			'@stylexjs': stylex,
+		},
+		rules: {
+			'@stylexjs/no-unused': 'error',
+			'@stylexjs/sort-keys': 'warn',
+			'@stylexjs/valid-shorthands': 'warn',
+			'@stylexjs/valid-styles': 'error',
+		},
+	},
+	{
+		plugins: {
 			onlyWarn,
 		},
 	},
@@ -37,6 +49,8 @@ export default defineConfig(
 				{
 					cspell: {
 						words: [
+							'stylex',
+							'stylexjs',
 							'funtoyz',
 							'waku',
 							'fumadocs',

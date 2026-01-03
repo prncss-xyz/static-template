@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 
-import { Box } from '@/components/box'
+import './index.css'
+
+import { DevStyleXInject } from '@/DevStylexInject'
 
 import { Footer } from '../components/footer'
 import { Header } from '../components/header'
@@ -11,7 +13,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 	const data = await getData()
 
 	return (
-		<Box>
+		<div>
 			<meta content={data.description} name='description' />
 			<link href={data.icon} rel='icon' type='image/png' />
 			<link href='https://fonts.googleapis.com' rel='preconnect' />
@@ -21,12 +23,11 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 				precedence='font'
 				rel='stylesheet'
 			/>
+			<DevStyleXInject cssHref='/stylex.css' />
 			<Header />
-			<main>
-				{children}
-			</main>
+			<main>{children}</main>
 			<Footer />
-		</Box>
+		</div>
 	)
 }
 

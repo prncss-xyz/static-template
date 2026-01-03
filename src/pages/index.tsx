@@ -1,6 +1,5 @@
 import { Link } from 'waku'
 
-import { Box } from '@/components/box'
 import { Counter } from '@/components/counter'
 
 export default async function HomePage() {
@@ -9,12 +8,10 @@ export default async function HomePage() {
 	return (
 		<div>
 			<title>{data.title}</title>
-			<Box textAlign='center'>{data.headline}</Box>
+			<div>{data.headline}</div>
 			<p>{data.body}</p>
 			<Counter />
-			<Link className='mt-4 inline-block underline' to='/about'>
-				About page
-			</Link>
+			<Link to='/about'>About page</Link>
 		</div>
 	)
 }

@@ -1,4 +1,4 @@
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
+import stylex from '@stylexjs/unplugin'
 import react from '@vitejs/plugin-react'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -12,7 +12,13 @@ export default defineConfig({
 			'import.meta.vitest': 'undefined',
 		},
 		plugins: [
-			vanillaExtractPlugin(),
+			stylex.vite({
+				dev: process.env.NODE_ENV === 'development',
+				devMode: 'css-only',
+				devPersistToDisk: true,
+				runtimeInjection: false,
+				useCSSLayers: true,
+			}),
 			react({
 				babel: {
 					plugins: ['babel-plugin-react-compiler'],

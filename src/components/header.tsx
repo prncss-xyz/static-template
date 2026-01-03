@@ -1,5 +1,11 @@
-import { Box } from './box'
+import * as stylex from '@stylexjs/stylex'
+
+const styles = stylex.create({
+	header: {
+		backgroundColor: 'blue',
+	},
+})
 
 export const Header = () => {
-	return <Box textAlign='center'>Waku starter</Box>
+	return <div {...stylex.props(styles.header)}>Waku starter</div>
 }
