@@ -1,57 +1,42 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
-  "tasks": {
-    "build": {
-      "outputs": [
-        "dist/**"
-      ],
-      "env": [
-        "BASE_PATH",
-        "DEV",
-        "NODE_ENV"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
-    },
-    "check:tests": {
-      "outputs": [
-        "coverage/**"
-      ]
-    },
-    "check:knip": {},
-    "check:types": {},
-    "check:prettier": {},
-    "check:eslint": {},
-    "fix:prettier": {},
-    "fix:eslint": {},
-    "fix": {
-      "dependsOn": [
-        "check:knip",
-        "check:types",
-        "check:tests",
-        "fix:prettier",
-        "fix:eslint",
-        "build"
-      ]
-    },
-    "check": {
-      "dependsOn": [
-        "check:knip",
-        "check:types",
-        "check:tests",
-        "check:prettier",
-        "check:eslint",
-        "build"
-      ]
-    },
-    "dev:web": {
-      "persistent": true,
-      "cache": false
-    },
-    "dev:tests": {
-      "persistent": true,
-      "cache": false
-    }
-  }
+	"$schema": "https://turborepo.com/schema.json",
+	"tasks": {
+		"build": {
+			"outputs": ["dist/**"],
+			"env": ["BASE_PATH", "DEV", "NODE_ENV"],
+			"dependsOn": ["^build"]
+		},
+		"check:tests": {
+			"outputs": ["coverage/**"]
+		},
+		"check:knip": {},
+		"check:types": {},
+		"check:prettier": {},
+		"check:eslint": {},
+		"fix:prettier": {},
+		"fix:eslint": {},
+		"fix": {
+			"dependsOn": ["fix:prettier", "fix:eslint"]
+		},
+		"nofix": {
+			"dependsOn": ["nofix:prettier", "nofix:eslint"]
+		},
+		"check": {
+			"dependsOn": ["check:knip", "check:types", "check:tests", "build"]
+		},
+		"check-fix": {
+			"dependsOn": ["check", "fix"]
+		},
+		"check-nofix": {
+			"dependsOn": ["check", "nofix"]
+		},
+		"dev:web": {
+			"persistent": true,
+			"cache": false
+		},
+		"dev:tests": {
+			"persistent": true,
+			"cache": false
+		}
+	}
 }
