@@ -6,7 +6,7 @@
 		"src/components/tokens.ts"
 	],
 	"project": ["src/**/*.ts"],
-	"ignoreDependencies": ["babel-plugin-react-compiler", "husky"],
+	"ignoreDependencies": ["babel-plugin-react-compiler", "husky", "sharp"],
 	"vite": {
 		"config": [
 			"waku.config.{js,mjs,ts,cjs,mts,cts}",

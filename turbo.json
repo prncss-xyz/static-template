@@ -1,11 +1,6 @@
 {
 	"$schema": "https://turborepo.com/schema.json",
 	"tasks": {
-		"build": {
-			"outputs": ["dist/**"],
-			"env": ["BASE_PATH", "DEV", "NODE_ENV"],
-			"dependsOn": ["^build"]
-		},
 		"check:tests": {
 			"outputs": ["coverage/**"]
 		},
@@ -22,7 +17,7 @@
 			"dependsOn": ["nofix:prettier", "nofix:eslint"]
 		},
 		"check": {
-			"dependsOn": ["check:knip", "check:types", "check:tests", "build"]
+			"dependsOn": ["check:knip", "check:types", "check:tests"]
 		},
 		"check-fix": {
 			"dependsOn": ["check", "fix"]

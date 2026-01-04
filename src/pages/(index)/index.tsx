@@ -1,6 +1,7 @@
 import { Link } from 'waku'
 
 import { Box } from '@/components/Box'
+import { RespImage } from '@/components/Image'
 
 import { Counter } from './_components/Counter'
 
@@ -13,6 +14,7 @@ export default async function HomePage() {
 			<div>{data.headline}</div>
 			<p>{data.body}</p>
 			<Counter />
+			<RespImage alt='toto' url='https://picsum.dev/1200/800' />
 			<Link to='/about'>About page</Link>
 		</Box>
 	)
