@@ -1,15 +1,17 @@
 import { Link } from 'waku'
 
+import { Box } from '@/components/box'
+
 export default async function AboutPage() {
 	const data = await getData()
 
 	return (
-		<div>
+		<Box flex='column' gap={3}>
 			<title>{data.title}</title>
 			<h1>{data.headline}</h1>
 			<p>{data.body}</p>
 			<Link to='/'>Return home</Link>
-		</div>
+		</Box>
 	)
 }
 

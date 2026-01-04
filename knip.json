@@ -2,11 +2,7 @@
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/pages/**/*.{jsx,tsx}", "src/pages.gen.{js,ts}"],
 	"project": ["src/**/*.ts"],
-	"ignoreDependencies": [
-		"@stylexjs/stylex",
-		"babel-plugin-react-compiler",
-		"husky"
-	],
+	"ignoreDependencies": ["babel-plugin-react-compiler", "husky"],
 	"vite": {
 		"config": [
 			"waku.config.{js,mjs,ts,cjs,mts,cts}",

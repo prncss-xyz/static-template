@@ -1,13 +1,13 @@
+import { Box } from './box'
+
 export const Footer = () => {
 	return (
 		<footer>
-			<div>
-				visit{' '}
-				<a href='https://waku.gg/' rel='noreferrer' target='_blank'>
-					waku.gg
-				</a>{' '}
-				to learn more
-			</div>
+			<Box flex='column' gap={3}>
+				<div>Footer</div>
+				<div>Footer</div>
+				<div>Footer</div>
+			</Box>
 		</footer>
 	)
 }
