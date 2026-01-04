@@ -1,6 +1,6 @@
 import { Link } from 'waku'
 
-import { Box } from '@/components/box'
+import { Box } from '@/components/Box'
 
 export default async function AboutPage() {
 	const data = await getData()

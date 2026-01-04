@@ -1,12 +1,21 @@
 {
-	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["src/pages/**/*.{jsx,tsx}", "src/pages.gen.{js,ts}"],
-	"project": ["src/**/*.ts"],
-	"ignoreDependencies": ["babel-plugin-react-compiler", "husky"],
-	"vite": {
-		"config": [
-			"waku.config.{js,mjs,ts,cjs,mts,cts}",
-			"vitest.config.{js,mjs,ts,cjs,mts,cts}"
-		]
-	}
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "src/pages/**/*.{jsx,tsx}",
+    "src/pages.gen.{js,ts}",
+    "src/components/tokens.ts"
+  ],
+  "project": [
+    "src/**/*.ts"
+  ],
+  "ignoreDependencies": [
+    "babel-plugin-react-compiler",
+    "husky"
+  ],
+  "vite": {
+    "config": [
+      "waku.config.{js,mjs,ts,cjs,mts,cts}",
+      "vitest.config.{js,mjs,ts,cjs,mts,cts}"
+    ]
+  }
 }

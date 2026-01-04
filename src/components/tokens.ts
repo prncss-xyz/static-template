@@ -10,6 +10,21 @@ const spaces = {
 }
 
 export const gapVariant = create({
+	1: { gap: spaces[1] },
+	2: { gap: spaces[2] },
 	3: { gap: spaces[3] },
+	4: { gap: spaces[4] },
+	5: { gap: spaces[5] },
 	none: { gap: spaces.none },
+})
+
+export const flexVariant = create({
+	column: {
+		display: 'flex',
+		flexDirection: 'column',
+	},
+	row: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
 })

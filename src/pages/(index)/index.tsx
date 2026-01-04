@@ -1,7 +1,8 @@
 import { Link } from 'waku'
 
-import { Box } from '@/components/box'
-import { Counter } from '@/components/counter'
+import { Box } from '@/components/Box'
+
+import { Counter } from './_components/Counter'
 
 export default async function HomePage() {
 	const data = await getData()

@@ -1,15 +1,12 @@
 import type { ReactNode } from 'react'
 
-import { DevStyleXInject } from '@/DevStylexInject'
+import { DevStyleXInject } from './_components/DevStylexInject'
+import { Footer } from './_components/Footer'
+import './_components/index.css'
+import { Header } from './_components/Header'
 
-import { Footer } from '../components/footer'
-import { Header } from '../components/header'
-
-type RootLayoutProps = { children: ReactNode }
-
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default async function Layout({ children }: { children: ReactNode }) {
 	const data = await getData()
-
 	return (
 		<div>
 			<meta content={data.description} name='description' />

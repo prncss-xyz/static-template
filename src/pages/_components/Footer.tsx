@@ -1,4 +1,4 @@
-import { Box } from './box'
+import { Box } from '@/components/Box'
 
 export const Footer = () => {
 	return (
