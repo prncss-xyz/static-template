@@ -11,12 +11,19 @@ export default async function Layout({ children }: { children: ReactNode }) {
 		<div>
 			<meta content={data.description} name='description' />
 			<link href={data.icon} rel='icon' type='image/png' />
-			<link href='https://fonts.googleapis.com' rel='preconnect' />
-			<link crossOrigin='' href='https://fonts.gstatic.com' rel='preconnect' />
 			<link
-				href='https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap'
-				precedence='font'
-				rel='stylesheet'
+				as='font'
+				crossOrigin='anonymous'
+				href='/fonts/Nunito-Regular.woff2'
+				rel='preload'
+				type='font/woff2'
+			/>
+			<link
+				as='font'
+				crossOrigin='anonymous'
+				href='/fonts/Nunito-Italic.woff2'
+				rel='preload'
+				type='font/woff2'
 			/>
 			<DevStyleXInject cssHref='/stylex.css' />
 			<Header />
