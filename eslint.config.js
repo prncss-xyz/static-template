@@ -30,7 +30,7 @@ export default defineConfig(
 		},
 		rules: {
 			'@stylexjs/no-unused': 'error',
-			'@stylexjs/sort-keys': 'warn',
+			'@stylexjs/sort-keys': 'off',
 			'@stylexjs/valid-shorthands': 'warn',
 			'@stylexjs/valid-styles': 'error',
 		},
@@ -58,6 +58,7 @@ export default defineConfig(
 				{
 					cspell: {
 						words: [
+							'jsxs',
 							'stylex',
 							'stylexjs',
 							'funtoyz',

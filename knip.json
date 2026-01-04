@@ -3,7 +3,8 @@
 	"entry": [
 		"src/pages/**/*.{jsx,tsx}",
 		"src/pages.gen.{js,ts}",
-		"src/components/tokens.ts"
+		"src/components/tokens.ts",
+		"src/components/MD/createMD.ts"
 	],
 	"project": ["src/**/*.ts"],
 	"ignoreDependencies": ["babel-plugin-react-compiler", "husky", "sharp"],

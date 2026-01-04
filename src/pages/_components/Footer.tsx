@@ -1,13 +1,13 @@
-import { Box } from '@/components/Box'
+import { Row } from '@/components/elements/Box'
 
 export const Footer = () => {
 	return (
 		<footer>
-			<Box flex='column' gap={3}>
+			<Row g={2}>
 				<div>Footer</div>
 				<div>Footer</div>
 				<div>Footer</div>
-			</Box>
+			</Row>
 		</footer>
 	)
 }

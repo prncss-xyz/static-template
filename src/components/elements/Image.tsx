@@ -1,6 +1,9 @@
+import { props } from '@stylexjs/stylex'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
+
+import { ElemProps } from './types'
 
 const ASSET_DIR = './public'
 const CACHE_DIR = '/gen'
@@ -45,7 +48,12 @@ async function getResponsiveImage(remoteUrl: string) {
 	}
 }
 
-export async function RespImage({ alt, url }: { alt: string; url: string }) {
+export async function RespImage({
+	src: url,
+	style,
+	...rest
+}: ElemProps<'img'>) {
+	if (!url) return <img {...rest} {...props(style)} />
 	const { src, srcSet } = await getResponsiveImage(url)
-	return <img alt={alt} src={src} srcSet={srcSet} />
+	return <img src={src} srcSet={srcSet} {...rest} {...props(style)} />
 }

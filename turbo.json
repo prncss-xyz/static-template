@@ -27,7 +27,8 @@
 		},
 		"dev:web": {
 			"persistent": true,
-			"cache": false
+			"cache": false,
+			"env": ["BASE_PATH", "DEV", "NODE_ENV"]
 		},
 		"dev:tests": {
 			"persistent": true,

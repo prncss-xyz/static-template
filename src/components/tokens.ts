@@ -9,7 +9,7 @@ const spaces = {
 	none: 0,
 }
 
-export const gapVariant = create({
+export const gap = create({
 	1: { gap: spaces[1] },
 	2: { gap: spaces[2] },
 	3: { gap: spaces[3] },
@@ -18,13 +18,24 @@ export const gapVariant = create({
 	none: { gap: spaces.none },
 })
 
-export const flexVariant = create({
-	column: {
-		display: 'flex',
-		flexDirection: 'column',
+export const fontSizes = create({
+	1: {
+		fontSize: '2rem',
 	},
-	row: {
-		display: 'flex',
-		flexDirection: 'row',
+	2: {
+		fontSize: '1.5rem',
+	},
+	3: {
+		fontSize: '1.17rem',
+	},
+	4: {
+		fontSize: '1rem',
+	},
+	5: {
+		// small
+		fontSize: '0.83rem',
+	},
+	6: {
+		fontSize: '0.67rem',
 	},
 })

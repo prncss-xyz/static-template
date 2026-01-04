@@ -1,16 +1,24 @@
 'use client'
 
+import { Button } from '@base-ui/react'
+import { create, props } from '@stylexjs/stylex'
 import { useState } from 'react'
+
+const styles = create({
+	button: {
+		color: 'green',
+	},
+})
 
 export const Counter = () => {
 	const [count, setCount] = useState(0)
 
-	const handleIncrement = () => setCount((c) => c + 1)
-
 	return (
 		<section>
 			<div>Count: {count}</div>
-			<button onClick={handleIncrement}>Increment</button>
+			<Button onClick={() => setCount((c) => c + 1)} {...props(styles.button)}>
+				Increment
+			</Button>
 		</section>
 	)
 }
