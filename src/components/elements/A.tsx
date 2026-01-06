@@ -1,11 +1,12 @@
 import { create, props } from '@stylexjs/stylex'
 import { Link } from 'waku'
 
-import { fontSizes } from '../tokens'
+import { fontSizes } from '../tokens.stylex'
 import { ElemProps } from './types'
 
 const styles = create({
 	base: {
+		fontSize: fontSizes[2],
 		fontWeight: 'bold',
 	},
 })
@@ -19,7 +20,7 @@ export function A({ children, href, style, ...rest }: BoxProps) {
 				children={children}
 				to={href as any}
 				{...rest}
-				{...props(styles.base, fontSizes[5], style)}
+				{...props(styles.base, style)}
 			/>
 		)
 	return (
@@ -28,7 +29,7 @@ export function A({ children, href, style, ...rest }: BoxProps) {
 			href={href}
 			target='_blank'
 			{...rest}
-			{...props(styles.base, fontSizes[5], style)}
+			{...props(styles.base, style)}
 		/>
 	)
 }

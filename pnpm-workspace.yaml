@@ -2,3 +2,4 @@ onlyBuiltDependencies:
   - cn-font-split
   - koffi
   - protobufjs
+  - sharp

@@ -168,6 +168,9 @@ export default defineConfig(
 			'react-hooks': reactHooks,
 			'react-refresh': reactRefresh,
 		},
+		rules: {
+			'react/self-closing-comp': 'warn',
+		},
 	},
 	{
 		files: ['**/*.{js,jsx,ts,tsx}'],

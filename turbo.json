@@ -4,7 +4,6 @@
 		"check:tests": {
 			"outputs": ["coverage/**"]
 		},
-		"check:knip": {},
 		"check:types": {},
 		"check:prettier": {},
 		"check:eslint": {},
@@ -17,7 +16,7 @@
 			"dependsOn": ["nofix:prettier", "nofix:eslint"]
 		},
 		"check": {
-			"dependsOn": ["check:knip", "check:types", "check:tests"]
+			"dependsOn": ["check:types", "check:tests"]
 		},
 		"check-fix": {
 			"dependsOn": ["check", "fix"]

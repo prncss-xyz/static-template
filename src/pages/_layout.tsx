@@ -1,19 +1,22 @@
 import type { ReactNode } from 'react'
 
-import { BaseLayout } from './_components/BaseLayout'
 import './_components/index.css'
-import { Footer } from './_components/Footer'
-import { Header } from './_components/Header'
+import { BaseLayout } from './_components/BaseLayout'
+import { Navigation } from './_components/NavBar'
 
-export default async function Layout({ children }: { children: ReactNode }) {
+export default async function Layout({
+	children,
+}: {
+	children: ReactNode
+	path: string
+}) {
 	const data = await getData()
 	return (
 		<BaseLayout>
 			<meta content={data.description} name='description' />
 			<link href={data.icon} rel='icon' type='image/png' />
-			<Header />
+			<Navigation />
 			<main>{children}</main>
-			<Footer />
 		</BaseLayout>
 	)
 }

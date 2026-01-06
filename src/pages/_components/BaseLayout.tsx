@@ -1,6 +1,17 @@
+import { create, props } from '@stylexjs/stylex'
 import { ReactNode } from 'react'
 
+import { colorStyles } from '@/components/colorStyles'
+
 import { DevStyleXInject } from './DevStylexInject'
+
+const styles = create({
+	root: {
+		fontFamily: 'nunito',
+		isolation: 'isolate',
+		minHeight: '100vh',
+	},
+})
 
 export function BaseLayout({ children }: { children: ReactNode }) {
 	return (
@@ -20,7 +31,7 @@ export function BaseLayout({ children }: { children: ReactNode }) {
 				type='font/woff2'
 			/>
 			<DevStyleXInject cssHref='/stylex.css' />
-			{children}
+			<div {...props(colorStyles.direct, styles.root)}>{children}</div>
 		</>
 	)
 }

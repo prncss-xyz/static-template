@@ -1,6 +1,6 @@
 import { Link } from 'waku'
 
-import { Col } from '@/components/elements/Box'
+import { Col } from '@/components/Box'
 import { H1 } from '@/components/elements/Heading'
 import { RespImage } from '@/components/elements/Image'
 import { MD } from '@/components/MD'
@@ -28,7 +28,7 @@ Hello *hello* **hi**!
 export default async function HomePage() {
 	const data = await getData()
 	return (
-		<Col g={5}>
+		<Col gap={5}>
 			<title>{data.title}</title>
 			<H1>{data.headline}</H1>
 			<p>{data.body}</p>

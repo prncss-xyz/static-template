@@ -13,6 +13,9 @@ export default defineConfig({
 		},
 		plugins: [
 			stylex.vite({
+				aliases: {
+					'@/*': [path.resolve(__dirname, 'src/*')],
+				},
 				dev: process.env.NODE_ENV === 'development',
 				devMode: 'css-only',
 				devPersistToDisk: true,

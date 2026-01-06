@@ -1,12 +1,12 @@
 import { Link } from 'waku'
 
-import { Col } from '@/components/elements/Box'
+import { Col } from '@/components/Box'
 
 export default async function AboutPage() {
 	const data = await getData()
 
 	return (
-		<Col g={3}>
+		<Col gap={3}>
 			<title>{data.title}</title>
 			<h1>{data.headline}</h1>
 			<p>{data.body}</p>
