@@ -9,7 +9,7 @@ import { Box, Col, Row } from '@/components/Box'
 import { colorStyles } from '@/components/colorStyles'
 import { fontFamilies, fontSizes } from '@/components/tokens.stylex'
 
-import { defaultTitle, entries, Entry } from './data'
+import { Data, Entry } from './data'
 
 const styles = create({
 	full: {
@@ -60,10 +60,16 @@ function Nav({
 	)
 }
 
-export function NavOverlay({ style }: { style?: StyleXStyles }) {
+export function NavOverlay({
+	data,
+	style,
+}: {
+	data: Data
+	style?: StyleXStyles
+}) {
 	const { path } = useRouter()
-	const current = entries.find((entry) => entry.to === path)
-	const title = current?.title ?? defaultTitle
+	const current = data.entries.find((entry) => entry.to === path)
+	const title = current?.title ?? data.title
 	const [open, setOpen] = useState(false)
 	const close = () => setOpen(false)
 	return (
@@ -83,7 +89,7 @@ export function NavOverlay({ style }: { style?: StyleXStyles }) {
 					<Dialog.Backdrop {...props(styles.full, colorStyles.direct)} />
 					<div {...props(styles.full)}>
 						<Col justify='center' size='fullHeight'>
-							{entries.map((entry) => (
+							{data.entries.map((entry) => (
 								<Nav
 									active={entry.to === path}
 									entry={entry}
@@ -101,9 +107,7 @@ export function NavOverlay({ style }: { style?: StyleXStyles }) {
 								p={4}
 								style={colorStyles.direct}
 							>
-								<Dialog.Title {...props(styles.h2)}>
-									{defaultTitle}
-								</Dialog.Title>
+								<Dialog.Title {...props(styles.h2)}>{data.title}</Dialog.Title>
 								<IoClose size={32} {...props(colorStyles.direct)} />
 							</Row>
 						</Col>

@@ -13,9 +13,7 @@ export default async function Layout({
 	const data = await getData()
 	return (
 		<BaseLayout>
-			<meta content={data.description} name='description' />
-			<link href={data.icon} rel='icon' type='image/png' />
-			<Navigation />
+			<Navigation data={data} />
 			<main>{children}</main>
 		</BaseLayout>
 	)
@@ -23,8 +21,11 @@ export default async function Layout({
 
 const getData = async () => {
 	const data = {
-		description: 'An internet website!',
-		icon: '/images/favicon.png',
+		entries: [
+			{ title: 'Home', to: '/' },
+			{ title: 'About', to: '/about' },
+		],
+		title: 'Waku',
 	}
 
 	return data

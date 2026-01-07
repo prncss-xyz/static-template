@@ -1,7 +1,5 @@
 # TODO
 
-- menu data as param
-- responsive menu
 - CI
 - airtable
 

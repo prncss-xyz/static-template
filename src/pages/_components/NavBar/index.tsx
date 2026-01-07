@@ -2,6 +2,7 @@
 
 import { create, props } from '@stylexjs/stylex'
 
+import { Data } from './data'
 import { NavBar } from './NavBar'
 import { NavOverlay } from './NavOverlay'
 
@@ -22,14 +23,14 @@ const styles = create({
 	},
 })
 
-export function Navigation() {
+export function Navigation({ data }: { data: Data }) {
 	return (
 		<>
 			<div {...props(styles.md)}>
-				<NavOverlay />
+				<NavOverlay data={data} />
 			</div>
 			<div {...props(styles.sm)}>
-				<NavBar />
+				<NavBar data={data} />
 			</div>
 		</>
 	)

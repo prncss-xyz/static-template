@@ -3,9 +3,7 @@ export type Entry = {
 	to: string
 }
 
-export const defaultTitle = 'Hello'
-
-export const entries: Entry[] = [
-	{ title: 'Home', to: '/' },
-	{ title: 'About', to: '/about' },
-]
+export type Data = {
+	entries: Entry[]
+	title: string
+}

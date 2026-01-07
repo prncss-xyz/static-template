@@ -4,7 +4,7 @@ import { Link, useRouter } from 'waku'
 import { Box, Row } from '@/components/Box'
 import { colorStyles } from '@/components/colorStyles'
 
-import { entries, Entry } from './data'
+import { Data, Entry } from './data'
 
 function Nav({
 	active,
@@ -28,11 +28,11 @@ function Nav({
 	)
 }
 
-export function NavBar({ style }: { style?: StyleXStyles }) {
+export function NavBar({ data, style }: { data: Data; style?: StyleXStyles }) {
 	const { path } = useRouter()
 	return (
 		<Row gap={3} justify='between' style={style}>
-			{entries.map((entry) => (
+			{data.entries.map((entry) => (
 				<Nav active={entry.to === path} entry={entry} key={entry.to} />
 			))}
 		</Row>
