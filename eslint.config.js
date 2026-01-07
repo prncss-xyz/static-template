@@ -58,6 +58,7 @@ export default defineConfig(
 				{
 					cspell: {
 						words: [
+              'airtable',
 							'jsxs',
 							'stylex',
 							'stylexjs',

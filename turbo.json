@@ -27,7 +27,7 @@
 		"dev:web": {
 			"persistent": true,
 			"cache": false,
-			"env": ["BASE_PATH", "DEV", "NODE_ENV"]
+			"env": ["BASE_PATH", "DEV", "NODE_ENV", "VITE_AIRTABLE_TOKEN"]
 		},
 		"dev:tests": {
 			"persistent": true,
