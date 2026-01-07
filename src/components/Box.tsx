@@ -4,6 +4,19 @@ import { create, props, StyleXStyles } from '@stylexjs/stylex'
 
 import { spaces } from './tokens.stylex'
 
+const sizeVariants = create({
+	fullHeight: {
+		height: '100%',
+	},
+	fullSize: {
+		height: '100%',
+		width: '100%',
+	},
+	fullWidth: {
+		width: '100%',
+	},
+})
+
 const flexVariants = create({
 	col: {
 		display: 'flex',
@@ -51,12 +64,58 @@ const alignVariants = create({
 	},
 })
 
-const paddingVariants = create({
+const pVariants = create({
 	1: { padding: spaces[1] },
 	2: { padding: spaces[2] },
 	3: { padding: spaces[3] },
 	4: { padding: spaces[4] },
 	5: { padding: spaces[5] },
+})
+
+const pxVariants = create({
+	1: {
+		paddingLeft: spaces[1],
+		paddingRight: spaces[1],
+	},
+	2: {
+		paddingLeft: spaces[1],
+		paddingRight: spaces[1],
+	},
+	3: {
+		paddingLeft: spaces[1],
+		paddingRight: spaces[1],
+	},
+	4: {
+		paddingLeft: spaces[1],
+		paddingRight: spaces[1],
+	},
+	5: {
+		paddingLeft: spaces[1],
+		paddingRight: spaces[1],
+	},
+})
+
+const pyVariants = create({
+	1: {
+		paddingBottom: spaces[1],
+		paddingTop: spaces[1],
+	},
+	2: {
+		paddingBottom: spaces[1],
+		paddingTop: spaces[1],
+	},
+	3: {
+		paddingBottom: spaces[1],
+		paddingTop: spaces[1],
+	},
+	4: {
+		paddingBottom: spaces[1],
+		paddingTop: spaces[1],
+	},
+	5: {
+		paddingBottom: spaces[1],
+		paddingTop: spaces[1],
+	},
 })
 
 const gapVariants = create({
@@ -73,7 +132,10 @@ export type BoxBaseProps<E extends React.ElementType = React.ElementType> = {
 	flex?: keyof typeof flexVariants
 	gap?: keyof typeof gapVariants
 	justify?: keyof typeof justifyVariants
-	p?: keyof typeof paddingVariants
+	p?: keyof typeof pVariants
+	px?: keyof typeof pxVariants
+	py?: keyof typeof pyVariants
+	size?: keyof typeof sizeVariants
 	style?: StyleXStyles
 }
 
@@ -89,6 +151,9 @@ export function Box<E extends React.ElementType = typeof defaultElement>({
 	gap,
 	justify,
 	p,
+	px,
+	py,
+	size,
 	style,
 	...rest
 }: BoxProps<E>) {
@@ -98,10 +163,13 @@ export function Box<E extends React.ElementType = typeof defaultElement>({
 			{...rest}
 			{...props(
 				flex && flexVariants[flex],
-				p && paddingVariants[p],
+				p && pVariants[p],
+				px && pxVariants[px],
+				py && pyVariants[py],
 				gap && gapVariants[gap],
 				align && alignVariants[align],
 				justify && justifyVariants[justify],
+				size && sizeVariants[size],
 				style,
 			)}
 		/>

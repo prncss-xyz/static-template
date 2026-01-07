@@ -3,7 +3,8 @@ export type Entry = {
 	to: string
 }
 
-export const defaultTitle = 'Home'
+export const defaultTitle = 'Hello'
+
 export const entries: Entry[] = [
 	{ title: 'Home', to: '/' },
 	{ title: 'About', to: '/about' },

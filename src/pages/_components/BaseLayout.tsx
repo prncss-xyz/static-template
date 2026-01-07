@@ -7,7 +7,6 @@ import { DevStyleXInject } from './DevStylexInject'
 
 const styles = create({
 	root: {
-		fontFamily: 'nunito',
 		isolation: 'isolate',
 		minHeight: '100vh',
 	},

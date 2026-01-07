@@ -1,15 +1,36 @@
 'use client'
 
-import { NavBar } from './NavBar'
-import { OverlayNav } from './OverlayNav'
+import { create, props } from '@stylexjs/stylex'
 
-// TODO: responsive styles
+import { NavBar } from './NavBar'
+import { NavOverlay } from './NavOverlay'
+
+const SMALL = '@media (max-width: 650px)'
+
+const styles = create({
+	md: {
+		display: {
+			default: 'none',
+			[SMALL]: 'block',
+		},
+	},
+	sm: {
+		display: {
+			default: 'block',
+			[SMALL]: 'none',
+		},
+	},
+})
 
 export function Navigation() {
 	return (
 		<>
-			<OverlayNav />
-			<NavBar />
+			<div {...props(styles.md)}>
+				<NavOverlay />
+			</div>
+			<div {...props(styles.sm)}>
+				<NavBar />
+			</div>
 		</>
 	)
 }

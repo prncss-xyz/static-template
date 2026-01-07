@@ -9,6 +9,7 @@ import { Counter } from './_components/Counter'
 
 const md = `
 # Toto
+## Toto
 
 Hello *hello* **hi**!
 

@@ -1,39 +1,36 @@
 import { create, props } from '@stylexjs/stylex'
 import { ElementType } from 'react'
 
-import { fontSizes } from '../tokens.stylex'
+import { fontFamilies, fontSizes } from '../tokens.stylex'
 import { ElemProps } from './types'
 
 const styles = create({
 	base: {
+		fontFamily: fontFamilies.heading,
 		fontWeight: 'bold',
+		marginTop: '0.67lh',
 	},
 })
 
+// TODO: as ratio
 const sizeVariants = create({
 	1: {
 		fontSize: fontSizes[6],
-		marginTop: '0.67rem',
 	},
 	2: {
 		fontSize: fontSizes[5],
-		marginTop: '0.83rem',
 	},
 	3: {
 		fontSize: fontSizes[4],
-		marginTop: '1rem',
 	},
 	4: {
 		fontSize: fontSizes[3],
-		marginTop: '1.33rem',
 	},
 	5: {
 		fontSize: fontSizes[2],
-		marginTop: '1.67rem',
 	},
 	6: {
 		fontSize: fontSizes[1],
-		marginTop: '0.5rem',
 	},
 })
 

@@ -5,6 +5,13 @@ export const colors = defineVars({
 	text: 'white',
 })
 
+export const fontFamilies = defineVars({
+	// eslint-disable-next-line @cspell/spellchecker
+	base: 'nunito, sans-serif',
+	// eslint-disable-next-line @cspell/spellchecker
+	heading: 'nunito, sans-serif',
+})
+
 export const fontSizes = defineVars({
 	1: '0.67rem',
 	// small

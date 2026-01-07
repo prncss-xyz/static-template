@@ -1,7 +1,10 @@
 # TODO
 
-## Subsetting fonts
+- menu data as param
+- responsive menu
+- CI
+- airtable
 
-Fix nested list styling.
+## Subsetting fonts
 
 > You can use a tool like glyphhanger or pyftsubset (available on Void via python3-fonttools)
