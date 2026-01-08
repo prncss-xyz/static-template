@@ -4,9 +4,4 @@ import assert from 'assert'
 const apiKey = import.meta.env.VITE_AIRTABLE_TOKEN
 assert(apiKey, 'VITE_AIRTABLE_API_KEY is not defined')
 
-export const airtable = new Airtable({
-	apiKey,
-})
-
-/* eslint-disable @cspell/spellchecker */
-export const base = airtable.base('appn0HcR7VtNjIEiG')
+export const airtable = new Airtable({ apiKey })

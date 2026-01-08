@@ -1,7 +1,8 @@
 # TODO
 
+- caroussel
+- font bug
 - CI
-- airtable
 
 ## Subsetting fonts
 
