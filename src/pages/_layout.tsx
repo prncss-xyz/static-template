@@ -1,12 +1,10 @@
 import type { ReactNode } from 'react'
 
-import slugify from '@sindresorhus/slugify'
-
 import './_components/index.css'
 
 import { Col } from '@/components/Box'
-import { getContentsBySection } from '@/data/airtable/queries/contents'
-import { getMeta } from '@/data/airtable/queries/meta'
+import { getPages } from '@/data/queries/pages'
+import { site } from '@/data/queries/site'
 
 import { BaseLayout } from './_components/BaseLayout'
 import { Navigation } from './_components/NavBar'
@@ -29,13 +27,14 @@ export default async function Layout({
 	)
 }
 
+const { title } = site
+
 const getData = async () => {
-	const { title } = await getMeta()
-	const contents = await getContentsBySection()
+	const contents = await getPages()
 	return {
-		entries: Object.keys(contents).map((title) => ({
+		entries: contents.map(({ slug, title }) => ({
 			title,
-			to: `/section/${slugify(title)}`,
+			to: '/' + slug,
 		})),
 		title,
 	}

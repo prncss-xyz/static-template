@@ -7,7 +7,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 import { fontSizes } from '@/components/tokens.stylex'
 import { ImageProps } from '@/getResponsiveImage'
 
-import { Col, Row } from '../../../components/Box'
+import { Col, Row } from '../Box'
 
 const symbols = {
 	circle: '○',

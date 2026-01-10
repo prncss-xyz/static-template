@@ -1,8 +1,11 @@
+import slugify from '@sindresorhus/slugify'
 import z from 'zod'
 
-import { airtable } from '../core'
+import { airtable } from '../airtable'
 
-const metaSchema = z.object({
+const siteSchema = z.object({
+	blog: z.string().transform((s) => slugify(s)),
+	home: z.string().transform((s) => slugify(s)),
 	title: z.string(),
 })
 
@@ -18,10 +21,10 @@ const schema = z
 			.transform(({ fields: { Key, Value } }) => [Key, Value] as const),
 	)
 	.transform((rows) =>
-		metaSchema.parse(Object.fromEntries(rows.filter(([key]) => key !== ''))),
+		siteSchema.parse(Object.fromEntries(rows.filter(([key]) => key !== ''))),
 	)
 
-const metaP = airtable
+export const site = await airtable
 	/* eslint-disable @cspell/spellchecker */
 	.base('appn0HcR7VtNjIEiG')
 	/* eslint-disable @cspell/spellchecker */
@@ -29,7 +32,3 @@ const metaP = airtable
 	.select()
 	.all()
 	.then(schema.parseAsync)
-
-export function getMeta() {
-	return metaP
-}

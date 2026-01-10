@@ -6,12 +6,12 @@ import type { PathsForPages, GetConfigResponse } from 'waku/router';
 // prettier-ignore
 import type { getConfig as File_IndexIndex_getConfig } from './pages/(index)/index';
 // prettier-ignore
-import type { getConfig as File_SectionSlug_getConfig } from './pages/section/[slug]';
+import type { getConfig as File_Slug_getConfig } from './pages/[slug]';
 
 // prettier-ignore
 type Page =
 | ({ path: '/' } & GetConfigResponse<typeof File_IndexIndex_getConfig>)
-| ({ path: '/section/[slug]' } & GetConfigResponse<typeof File_SectionSlug_getConfig>);
+| ({ path: '/[slug]' } & GetConfigResponse<typeof File_Slug_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {
