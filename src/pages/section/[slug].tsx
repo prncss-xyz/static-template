@@ -10,17 +10,17 @@ import { Carousel } from '@/pages/section/_components/Carousel'
 function Section({
 	contents,
 	images,
-	keepTitle,
+	skipTitle,
 	title,
 }: {
 	contents: string
 	images: ImageProps[]
-	keepTitle: boolean
+	skipTitle: boolean
 	title: string
 }) {
 	return (
 		<div>
-			{keepTitle && <H2>{title}</H2>}
+			{!skipTitle && <H2>{title}</H2>}
 			<Carousel images={images} />
 			<MD>{contents}</MD>
 		</div>
@@ -45,7 +45,7 @@ export default async function ({ slug }: { slug: string }) {
 			<H1>{section}</H1>
 			{data.map((content, index) => (
 				<Section
-					keepTitle={index > 0 || content.title !== section}
+					skipTitle={index === 0 && content.title === section}
 					{...content}
 					key={content.title}
 				/>

@@ -37,7 +37,7 @@ export function Carousel({ images }: { images: ImageProps[] }) {
 
 	const many = images.length > 1
 	return (
-		<Col align='center' gap={3} >
+		<Col align='center' gap={3}>
 			<Row align='center' gap={5}>
 				{many && (
 					<Button onClick={() => setIndex(move(-1))}>

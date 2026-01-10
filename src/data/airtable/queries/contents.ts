@@ -48,7 +48,7 @@ export const contentsBySection = allContents.then((rows) => {
 		rows.filter((row) => Boolean(row.section)),
 		(row) => row.section,
 	)
-  Object.values(res).forEach((item) => item!.reverse())
+	Object.values(res).forEach((item) => item!.reverse())
 	return res
 })
 
