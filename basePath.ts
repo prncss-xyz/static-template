@@ -3,7 +3,7 @@ function getBasePath() {
 	if (!repo) return undefined
 	const [, name] = repo.split('/')
 	if (!name) return undefined
-	return '/' + name
+	return '/' + name + '/'
 }
 
 export const basePath = getBasePath()
