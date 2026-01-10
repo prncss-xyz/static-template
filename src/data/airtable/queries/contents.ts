@@ -43,7 +43,7 @@ export const allContents = airtable
 	.all()
 	.then(schema.parseAsync)
 
-export const contentsBySection = allContents.then((rows) => {
+const contentsBySectionP = allContents.then((rows) => {
 	const res = Object.groupBy(
 		rows.filter((row) => Boolean(row.section)),
 		(row) => row.section,
@@ -52,4 +52,25 @@ export const contentsBySection = allContents.then((rows) => {
 	return res
 })
 
-export const contentsBySlug = contentsBySection.then(mapKey(slugify))
+export function getContentsBySection() {
+	return contentsBySectionP
+}
+
+const contentsBySlugP = contentsBySectionP.then(mapKey(slugify))
+
+export async function listSlugs() {
+	const contents = await contentsBySlugP
+	return Object.keys(contents)
+}
+
+export async function getSectionBySlug(slug: string) {
+	const contents = await contentsBySlugP
+	const data = contents[slug]
+	if (!data) throw new Error('Not found')
+	const data0 = data[0]
+	if (!data0) throw new Error('Empty')
+	return {
+		data,
+		name: data0.title,
+	}
+}

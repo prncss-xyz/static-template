@@ -5,8 +5,8 @@ import slugify from '@sindresorhus/slugify'
 import './_components/index.css'
 
 import { Col } from '@/components/Box'
-import { contentsBySection } from '@/data/airtable/queries/contents'
-import { allMeta } from '@/data/airtable/queries/meta'
+import { getContentsBySection } from '@/data/airtable/queries/contents'
+import { getMeta } from '@/data/airtable/queries/meta'
 
 import { BaseLayout } from './_components/BaseLayout'
 import { Navigation } from './_components/NavBar'
@@ -30,8 +30,8 @@ export default async function Layout({
 }
 
 const getData = async () => {
-	const { title } = await allMeta
-	const contents = await contentsBySection
+	const { title } = await getMeta()
+	const contents = await getContentsBySection()
 	return {
 		entries: Object.keys(contents).map((title) => ({
 			title,

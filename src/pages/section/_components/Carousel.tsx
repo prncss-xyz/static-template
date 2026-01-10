@@ -19,9 +19,9 @@ const styles = create({
 		fontSize: fontSizes[3],
 	},
 	image: {
-		height: '200px',
+		maxHeight: '50vh',
 		objectFit: 'contain',
-		width: '200px',
+		width: '75vw',
 	},
 })
 
@@ -37,8 +37,8 @@ export function Carousel({ images }: { images: ImageProps[] }) {
 
 	const many = images.length > 1
 	return (
-		<Col align='center' gap={3}>
-			<Row align='center' gap={5}>
+		<Col align='center' gap={5}>
+			<Row align='center' gap={4}>
 				{many && (
 					<Button onClick={() => setIndex(move(-1))}>
 						<FaChevronLeft style={{ color: 'white' }} />

@@ -21,7 +21,7 @@ const schema = z
 		metaSchema.parse(Object.fromEntries(rows.filter(([key]) => key !== ''))),
 	)
 
-export const allMeta = airtable
+const metaP = airtable
 	/* eslint-disable @cspell/spellchecker */
 	.base('appn0HcR7VtNjIEiG')
 	/* eslint-disable @cspell/spellchecker */
@@ -29,3 +29,7 @@ export const allMeta = airtable
 	.select()
 	.all()
 	.then(schema.parseAsync)
+
+export function getMeta() {
+	return metaP
+}
