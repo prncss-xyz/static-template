@@ -3,7 +3,7 @@
 - img in markdown
 - style tweaks
 - accueil
-    - refactor page as component
+  - refactor page as component
 - CI
 
 ## Subsetting fonts

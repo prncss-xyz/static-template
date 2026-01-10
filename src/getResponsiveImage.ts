@@ -17,7 +17,7 @@ async function getHash(input: string): Promise<string> {
 }
 
 const dir = ASSET_DIR + CACHE_DIR
-export async function getResponsiveImage(remoteUrl: string, alt: string) {
+export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	await fs.mkdir(dir, { recursive: true })
 	const fileName = await getHash(remoteUrl)
 
