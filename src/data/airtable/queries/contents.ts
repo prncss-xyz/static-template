@@ -43,11 +43,13 @@ export const allContents = airtable
 	.all()
 	.then(schema.parseAsync)
 
-export const contentsBySection = allContents.then((rows) =>
-	Object.groupBy(
-		rows.filter((row) => Boolean(row.section)).reverse(),
+export const contentsBySection = allContents.then((rows) => {
+	const res = Object.groupBy(
+		rows.filter((row) => Boolean(row.section)),
 		(row) => row.section,
-	),
-)
+	)
+  Object.values(res).forEach((item) => item!.reverse())
+	return res
+})
 
 export const contentsBySlug = contentsBySection.then(mapKey(slugify))

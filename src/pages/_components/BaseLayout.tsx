@@ -5,6 +5,7 @@ import { colorStyles } from '@/components/sharedStyles'
 
 import { DevStyleXInject } from './DevStylexInject'
 
+
 const styles = create({
 	root: {
 		isolation: 'isolate',

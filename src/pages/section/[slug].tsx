@@ -45,7 +45,7 @@ export default async function ({ slug }: { slug: string }) {
 			<H1>{section}</H1>
 			{data.map((content, index) => (
 				<Section
-					keepTitle={index === 0 && content.title !== section}
+					keepTitle={index > 0 || content.title !== section}
 					{...content}
 					key={content.title}
 				/>

@@ -1,7 +1,7 @@
 # TODO
 
-- font error
 - CI
+- remove 'section from address'
 
 ## Subsetting fonts
 

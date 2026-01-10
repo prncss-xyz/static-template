@@ -37,11 +37,11 @@ export function Carousel({ images }: { images: ImageProps[] }) {
 
 	const many = images.length > 1
 	return (
-		<Col align='center' gap={3}>
-			<Row gap={5}>
+		<Col align='center' gap={3} >
+			<Row align='center' gap={5}>
 				{many && (
 					<Button onClick={() => setIndex(move(-1))}>
-						<FaChevronLeft />
+						<FaChevronLeft style={{ color: 'white' }} />
 					</Button>
 				)}
 				<img {...images[index]} {...props(styles.image)} />
