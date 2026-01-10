@@ -1,7 +1,7 @@
 import { create, props } from '@stylexjs/stylex'
 import { ReactNode } from 'react'
 
-import { colorStyles } from '@/components/colorStyles'
+import { colorStyles } from '@/components/sharedStyles'
 
 import { DevStyleXInject } from './DevStylexInject'
 

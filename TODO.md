@@ -1,7 +1,6 @@
 # TODO
 
-- caroussel
-- font bug
+- font error
 - CI
 
 ## Subsetting fonts

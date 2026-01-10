@@ -1,8 +1,43 @@
+import { create } from '@stylexjs/stylex'
+
 import { Col } from '@/components/Box'
-import { H1 } from '@/components/elements/Heading'
+import { H1, H2 } from '@/components/elements/Heading'
 import { RespImage } from '@/components/elements/Image'
 import { MD } from '@/components/MD'
 import { contentsBySlug } from '@/data/airtable/queries/contents'
+import { Carousel } from '@/pages/section/_components/Carousel'
+
+const styles = create({
+	image: {
+		height: '200px',
+		objectFit: 'contain',
+		width: '200px',
+	},
+})
+
+function Section({
+	contents,
+	images,
+	section,
+	title,
+}: {
+	contents: string
+	images: string[]
+	section: string
+	title: string
+}) {
+	const imageNodes = images.map((image) => (
+		<RespImage alt={section} key={image} src={image} style={styles.image} />
+	))
+
+	return (
+		<div>
+			<H2>{title}</H2>
+			<Carousel images={imageNodes} />
+			<MD>{contents}</MD>
+		</div>
+	)
+}
 
 export default async function ({ slug }: { slug: string }) {
 	const contents = await contentsBySlug
@@ -10,17 +45,12 @@ export default async function ({ slug }: { slug: string }) {
 	if (!data) throw new Error('Not found')
 	const data0 = data[0]
 	if (!data0) throw new Error('Empty')
-	const { Title } = data0
+	const { section } = data0
 	return (
 		<Col gap={3}>
-			<H1>{Title}</H1>
+			<H1>{section}</H1>
 			{data.map((content) => (
-				<div key={content.Title}>
-					{content.Images.map((url) => (
-						<RespImage alt={content.Title} src={url} />
-					))}
-					<MD>{content.Contents}</MD>
-				</div>
+				<Section {...content} key={content.title} />
 			))}
 		</Col>
 	)

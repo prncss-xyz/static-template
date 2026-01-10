@@ -6,7 +6,7 @@ import { IoClose } from 'react-icons/io5'
 import { Link, useRouter } from 'waku'
 
 import { Box, Col, Row } from '@/components/Box'
-import { colorStyles } from '@/components/colorStyles'
+import { colorStyles } from '@/components/sharedStyles'
 import { fontFamilies, fontSizes } from '@/components/tokens.stylex'
 
 import { Data, Entry } from './data'

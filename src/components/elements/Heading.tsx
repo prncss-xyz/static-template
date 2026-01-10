@@ -9,6 +9,7 @@ const styles = create({
 		fontFamily: fontFamilies.heading,
 		fontWeight: 'bold',
 		marginTop: '0.67lh',
+		textAlign: 'center',
 	},
 })
 

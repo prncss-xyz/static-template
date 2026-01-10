@@ -2,7 +2,7 @@ import { StyleXStyles } from '@stylexjs/stylex'
 import { Link, useRouter } from 'waku'
 
 import { Box, Row } from '@/components/Box'
-import { colorStyles } from '@/components/colorStyles'
+import { colorStyles } from '@/components/sharedStyles'
 
 import { Data, Entry } from './data'
 
