@@ -81,7 +81,7 @@ export function NavOverlay({
 				size='fullWidth'
 				style={[colorStyles.direct, style]}
 			>
-				<h2 style={styles.h2}>{title}</h2>
+				<h2 {...props(styles.h2)}>{title}</h2>
 				<FaBars size={24} {...props(colorStyles.direct)} />
 			</Row>
 			<Dialog.Portal>

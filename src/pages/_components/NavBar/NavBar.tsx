@@ -1,7 +1,7 @@
-import { StyleXStyles } from '@stylexjs/stylex'
+import { create, StyleXStyles } from '@stylexjs/stylex'
 import { Link, useRouter } from 'waku'
 
-import { Box, Row } from '@/components/Box'
+import { Box, Col, Row } from '@/components/Box'
 import { colorStyles } from '@/components/sharedStyles'
 
 import { Data, Entry } from './data'
@@ -28,13 +28,22 @@ function Nav({
 	)
 }
 
+const styles = create({
+	bar: {
+		paddingBottom: '10em',
+		paddingTop: '1em',
+	},
+})
+
 export function NavBar({ data, style }: { data: Data; style?: StyleXStyles }) {
 	const { path } = useRouter()
 	return (
-		<Row gap={3} justify='between' style={style}>
-			{data.entries.map((entry) => (
-				<Nav active={entry.to === path} entry={entry} key={entry.to} />
-			))}
-		</Row>
+		<Col align='center' style={styles.bar}>
+			<Row gap={3} style={style}>
+				{data.entries.map((entry) => (
+					<Nav active={entry.to === path} entry={entry} key={entry.to} />
+				))}
+			</Row>
+		</Col>
 	)
 }

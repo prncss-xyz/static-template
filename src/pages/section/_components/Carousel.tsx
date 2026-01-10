@@ -1,10 +1,11 @@
 'use client'
 import { Button } from '@base-ui/react'
-import { create } from '@stylexjs/stylex'
-import { ReactNode, useState } from 'react'
+import { create, props } from '@stylexjs/stylex'
+import { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
 import { fontSizes } from '@/components/tokens.stylex'
+import { ImageProps } from '@/getResponsiveImage'
 
 import { Col, Row } from '../../../components/Box'
 
@@ -17,10 +18,16 @@ const styles = create({
 	icon: {
 		fontSize: fontSizes[3],
 	},
+	image: {
+		height: '200px',
+		objectFit: 'contain',
+		width: '200px',
+	},
 })
 
-export function Carousel({ images }: { images: ReactNode[] }) {
+export function Carousel({ images }: { images: ImageProps[] }) {
 	const [index, setIndex] = useState(0)
+	if (images.length === 0) return null
 	const move = (delta: number) => (last: number) => {
 		const next = last + delta
 		if (next < 0) return next + images.length
@@ -37,7 +44,7 @@ export function Carousel({ images }: { images: ReactNode[] }) {
 						<FaChevronLeft />
 					</Button>
 				)}
-				{images[index]}
+				<img {...images[index]} {...props(styles.image)} />
 				{many && (
 					<Button onClick={() => setIndex(move(1))}>
 						<FaChevronRight />

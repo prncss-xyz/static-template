@@ -9,6 +9,9 @@ import { NavOverlay } from './NavOverlay'
 const SMALL = '@media (max-width: 650px)'
 
 const styles = create({
+	base: {
+		fontWeight: 600,
+	},
 	md: {
 		display: {
 			default: 'none',
@@ -26,10 +29,10 @@ const styles = create({
 export function Navigation({ data }: { data: Data }) {
 	return (
 		<>
-			<div {...props(styles.md)}>
+			<div {...props(styles.md, styles.base)}>
 				<NavOverlay data={data} />
 			</div>
-			<div {...props(styles.sm)}>
+			<div {...props(styles.sm, styles.base)}>
 				<NavBar data={data} />
 			</div>
 		</>

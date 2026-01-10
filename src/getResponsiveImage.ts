@@ -1,9 +1,7 @@
-import { props } from '@stylexjs/stylex'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { ComponentProps } from 'react'
 import sharp from 'sharp'
-
-import { ElemProps } from './types'
 
 const ASSET_DIR = './public'
 const CACHE_DIR = '/gen'
@@ -19,7 +17,7 @@ async function getHash(input: string): Promise<string> {
 }
 
 const dir = ASSET_DIR + CACHE_DIR
-async function getResponsiveImage(remoteUrl: string) {
+export async function getResponsiveImage(remoteUrl: string, alt: string) {
 	await fs.mkdir(dir, { recursive: true })
 	const fileName = await getHash(remoteUrl)
 
@@ -43,17 +41,10 @@ async function getResponsiveImage(remoteUrl: string) {
 	)
 
 	return {
+		alt,
 		src: `${CACHE_DIR}/${fileName}-1024.webp`,
 		srcSet: sources.join(', '),
 	}
 }
 
-export async function RespImage({
-	src: url,
-	style,
-	...rest
-}: ElemProps<'img'>) {
-	if (!url) return <img {...rest} {...props(style)} />
-	const { src, srcSet } = await getResponsiveImage(url)
-	return <img src={src} srcSet={srcSet} {...rest} {...props(style)} />
-}
+export type ImageProps = ComponentProps<'img'>

@@ -2,42 +2,36 @@ import { create } from '@stylexjs/stylex'
 
 import { Col } from '@/components/Box'
 import { H1, H2 } from '@/components/elements/Heading'
-import { RespImage } from '@/components/elements/Image'
 import { MD } from '@/components/MD'
 import { contentsBySlug } from '@/data/airtable/queries/contents'
+import { ImageProps } from '@/getResponsiveImage'
 import { Carousel } from '@/pages/section/_components/Carousel'
-
-const styles = create({
-	image: {
-		height: '200px',
-		objectFit: 'contain',
-		width: '200px',
-	},
-})
 
 function Section({
 	contents,
 	images,
-	section,
+	keepTitle,
 	title,
 }: {
 	contents: string
-	images: string[]
-	section: string
+	images: ImageProps[]
+	keepTitle: boolean
 	title: string
 }) {
-	const imageNodes = images.map((image) => (
-		<RespImage alt={section} key={image} src={image} style={styles.image} />
-	))
-
 	return (
 		<div>
-			<H2>{title}</H2>
-			<Carousel images={imageNodes} />
+			{keepTitle && <H2>{title}</H2>}
+			<Carousel images={images} />
 			<MD>{contents}</MD>
 		</div>
 	)
 }
+
+const styles = create({
+	readable: {
+		maxWidth: '60ch',
+	},
+})
 
 export default async function ({ slug }: { slug: string }) {
 	const contents = await contentsBySlug
@@ -47,10 +41,14 @@ export default async function ({ slug }: { slug: string }) {
 	if (!data0) throw new Error('Empty')
 	const { section } = data0
 	return (
-		<Col gap={3}>
+		<Col gap={3} style={styles.readable}>
 			<H1>{section}</H1>
-			{data.map((content) => (
-				<Section {...content} key={content.title} />
+			{data.map((content, index) => (
+				<Section
+					keepTitle={index === 0 && content.title !== section}
+					{...content}
+					key={content.title}
+				/>
 			))}
 		</Col>
 	)

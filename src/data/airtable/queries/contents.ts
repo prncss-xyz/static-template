@@ -1,6 +1,7 @@
 import slugify from '@sindresorhus/slugify'
 import z from 'zod'
 
+import { getResponsiveImage } from '@/getResponsiveImage'
 import { mapKey } from '@/utils'
 
 import { airtable } from '../core'
@@ -18,12 +19,17 @@ const schema = z.array(
 					Section: z.string().default(''),
 					Title: z.string().default(''),
 				})
-				.transform(({ Contents, Images, Section, Title }) => ({
-					contents: Contents,
-					images: Images,
-					section: Section,
-					title: Title,
-				})),
+				.transform(async ({ Contents, Images, Section, Title }) => {
+					const images = await Promise.all(
+						Images.map((url) => getResponsiveImage(url, Title)),
+					)
+					return {
+						contents: Contents,
+						images,
+						section: Section,
+						title: Title,
+					}
+				}),
 		})
 		.transform(({ fields }) => fields),
 )

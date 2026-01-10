@@ -4,6 +4,7 @@ import slugify from '@sindresorhus/slugify'
 
 import './_components/index.css'
 
+import { Col } from '@/components/Box'
 import { contentsBySection } from '@/data/airtable/queries/contents'
 import { allMeta } from '@/data/airtable/queries/meta'
 
@@ -20,7 +21,10 @@ export default async function Layout({
 	return (
 		<BaseLayout>
 			<Navigation data={data} />
-			<main>{children}</main>
+			<title>{data.title}</title>
+			<Col align='center' as='main'>
+				{children}
+			</Col>
 		</BaseLayout>
 	)
 }

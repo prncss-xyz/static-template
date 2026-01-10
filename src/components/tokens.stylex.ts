@@ -7,9 +7,9 @@ export const colors = defineVars({
 
 export const fontFamilies = defineVars({
 	// eslint-disable-next-line @cspell/spellchecker
-	base: 'nunito, sans-serif',
+	base: 'playfair, sans-serif',
 	// eslint-disable-next-line @cspell/spellchecker
-	heading: 'nunito, sans-serif',
+	heading: 'playfair, sans-serif',
 })
 
 export const fontSizes = defineVars({

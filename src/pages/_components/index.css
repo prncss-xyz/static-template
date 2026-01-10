@@ -82,23 +82,23 @@
 	}
 
 	@font-face {
-		font-family: 'nunito';
-		src: url('/fonts/Nunito-Regular.woff2') format('woff2');
+		font-family: 'playfair';
+		src: url('/fonts/PlayfairDisplay.woff2') format('woff2');
 		font-weight: normal;
 		font-style: normal;
 		font-display: swap;
 	}
 
 	@font-face {
-		font-family: 'nunito';
-		src: url('/fonts/Nunito-Italic.woff2') format('woff2');
+		font-family: 'playfair';
+		src: url('/fonts/PlayfairDisplay-Italic.woff2') format('woff2');
 		font-weight: normal;
 		font-style: italic;
 		font-display: swap;
 	}
 
 	body {
-		font-family: 'nunito';
+		font-family: 'playfair';
 	}
 }
 
