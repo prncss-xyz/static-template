@@ -1,37 +1,60 @@
 {
-	"$schema": "https://turborepo.com/schema.json",
-	"tasks": {
-		"check:tests": {
-			"outputs": ["coverage/**"]
-		},
-		"check:types": {},
-		"check:prettier": {},
-		"check:eslint": {},
-		"fix:prettier": {},
-		"fix:eslint": {},
-		"fix": {
-			"dependsOn": ["fix:prettier", "fix:eslint"]
-		},
-		"nofix": {
-			"dependsOn": ["nofix:prettier", "nofix:eslint"]
-		},
-		"check": {
-			"dependsOn": ["check:types", "check:tests"]
-		},
-		"check-fix": {
-			"dependsOn": ["check", "fix"]
-		},
-		"check-nofix": {
-			"dependsOn": ["check", "nofix"]
-		},
-		"dev:web": {
-			"persistent": true,
-			"cache": false,
-			"env": ["BASE_PATH", "DEV", "NODE_ENV", "VITE_AIRTABLE_TOKEN"]
-		},
-		"dev:tests": {
-			"persistent": true,
-			"cache": false
-		}
-	}
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "check:tests": {
+      "outputs": [
+        "coverage/**"
+      ]
+    },
+    "check:types": {},
+    "check:prettier": {},
+    "check:eslint": {},
+    "fix:prettier": {},
+    "fix:eslint": {},
+    "fix": {
+      "dependsOn": [
+        "fix:prettier",
+        "fix:eslint"
+      ]
+    },
+    "nofix": {
+      "dependsOn": [
+        "nofix:prettier",
+        "nofix:eslint"
+      ]
+    },
+    "check": {
+      "dependsOn": [
+        "check:types",
+        "check:tests"
+      ]
+    },
+    "check-fix": {
+      "dependsOn": [
+        "check",
+        "fix"
+      ]
+    },
+    "check-nofix": {
+      "dependsOn": [
+        "check",
+        "nofix"
+      ]
+    },
+    "dev:web": {
+      "persistent": true,
+      "cache": false,
+      "env": [
+        "BASE_PATH",
+        "DEV",
+        "NODE_ENV",
+        "VITE_AIRTABLE_TOKEN",
+        "GITHUB_REPOSITORY"
+      ]
+    },
+    "dev:tests": {
+      "persistent": true,
+      "cache": false
+    }
+  }
 }

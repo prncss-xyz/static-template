@@ -4,9 +4,12 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'waku/config'
 
+import { basePath } from './basePath'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+	basePath,
 	vite: {
 		define: {
 			'import.meta.vitest': 'undefined',

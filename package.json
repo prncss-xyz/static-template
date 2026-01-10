@@ -26,6 +26,7 @@
 		"@base-ui/react": "^1.0.0",
 		"@sindresorhus/slugify": "^3.0.0",
 		"@stylexjs/stylex": "^0.17.4",
+		"@types/node": "^25.0.6",
 		"airtable": "^0.12.2",
 		"react": "~19.2.3",
 		"react-dom": "~19.2.3",
