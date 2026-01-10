@@ -1,6 +1,6 @@
 function getBasePath() {
 	const repo = process.env.GITHUB_REPOSITORY
-	if (!repo) return undefined
+	if (!repo) return '/'
 	const [, name] = repo.split('/')
 	if (!name) return undefined
 	return '/' + name + '/'
