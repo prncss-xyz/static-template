@@ -13,8 +13,9 @@ const styles = create({
 		gridArea: '1 / 1',
 		objectFit: 'contain',
 	},
+	img: {},
 	invisible: {
-		opacity: 0,
+		// opacity: 0,
 	},
 	overlay: {
 		height: '100%',
@@ -23,7 +24,7 @@ const styles = create({
 })
 
 export function OptImage({
-	image: { alt, placeholder, src, srcSet },
+	image: { alt, height, placeholder, src, srcSet, width },
 	style,
 	...rest
 }: Omit<ComponentProps<'div'>, 'classname' | 'style'> & {
@@ -37,23 +38,28 @@ export function OptImage({
 	}, [])
 	return (
 		<div {...rest} {...props(styles.container)}>
-			<img
-				alt={alt}
-				onLoad={() => setLoaded(true)}
-				ref={imgRef}
-				src={src}
-				srcSet={srcSet}
-				{...props(style, styles.content, !loaded && styles.invisible)}
-			/>
+			{
+				<img
+					alt={alt}
+					onLoad={() => setLoaded(true)}
+					ref={imgRef}
+					src={src}
+					srcSet={srcSet}
+					{...props(style, styles.content, !loaded && styles.invisible)}
+				/>
+			}
 			<img
 				alt=''
 				aria-hidden='true'
+				height={height}
 				src={placeholder}
+				width={width}
 				{...props(
 					style,
 					styles.content,
 					styles.overlay,
 					loaded && styles.invisible,
+					styles.img,
 				)}
 			/>
 		</div>

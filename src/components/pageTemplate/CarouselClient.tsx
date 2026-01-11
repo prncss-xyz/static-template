@@ -62,7 +62,7 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 				)}
 				<div {...props(styles.atopContainer)}>
 					{images.map((image, i) => (
-						<div
+						<div key={image.src}
 							{...props(styles.atopContent, i !== index && styles.invisible)}
 						>
 							<OptImage image={image} style={styles.image} />

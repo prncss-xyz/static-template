@@ -23,9 +23,11 @@ async function getHash(input: string): Promise<string> {
 
 export interface ResponsiveImage {
 	alt?: string | undefined
+	height: number
 	placeholder: string
 	src: string
 	srcSet: string
+	width: number
 }
 
 export async function getResponsiveImage(remoteUrl: string, alt?: string) {
@@ -36,6 +38,9 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	const response = await fetch(remoteUrl)
 	const buffer = Buffer.from(await response.arrayBuffer())
 
+	const { height, width } = await sharp(buffer).metadata()
+
+	// TODO: parallelize
 	const tinyBuffer = await sharp(buffer).resize(20).blur().toBuffer()
 	const placeholder = `data:image/png;base64,${tinyBuffer.toString('base64')}`
 
@@ -55,8 +60,10 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 
 	return {
 		alt,
+		height,
 		placeholder,
 		src: `${basePath}${hash}-${widths[1]}.webp`,
 		srcSet: sources.join(', '),
+		width,
 	}
 }
