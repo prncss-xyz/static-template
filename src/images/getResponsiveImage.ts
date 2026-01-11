@@ -1,11 +1,14 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { ComponentProps } from 'react'
 import sharp from 'sharp'
 
-import { basePath } from '../basePath'
+// TODO: cache images
+import { basePath } from '../../basePath'
 
-const dest = './dist/public/'
+const { dest, prefix } =
+	process.env.NODE_ENV === 'development'
+		? { dest: './public/gen/', prefix: basePath + 'gen/' }
+		: { dest: './dist/public/gen/', prefix: basePath + 'gen/' }
 
 async function getHash(input: string): Promise<string> {
 	const msgUint8 = new TextEncoder().encode(input)
@@ -17,6 +20,13 @@ async function getHash(input: string): Promise<string> {
 		.slice(0, 12)
 }
 
+export interface ResponsiveImage {
+	alt?: string | undefined
+	placeholder: string
+	src: string
+	srcSet: string
+}
+
 export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	await fs.mkdir(dest, { recursive: true })
 	const hash = await getHash(remoteUrl)
@@ -24,6 +34,9 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	const widths = [640, 1024, 1920]
 	const response = await fetch(remoteUrl)
 	const buffer = Buffer.from(await response.arrayBuffer())
+
+	const tinyBuffer = await sharp(buffer).resize(20).blur().toBuffer()
+	const placeholder = `data:image/png;base64,${tinyBuffer.toString('base64')}`
 
 	const sources = await Promise.all(
 		widths.map(async (w) => {
@@ -35,15 +48,14 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 			} catch {
 				await sharp(buffer).resize(w).webp().toFile(outputPath)
 			}
-			return `${basePath}${name} ${w}w`
+			return `${prefix}${name} ${w}w`
 		}),
 	)
 
 	return {
 		alt,
-		src: `${basePath}${hash}-1024.webp`,
+		placeholder,
+		src: `${basePath}${hash}-${widths[1]}.webp`,
 		srcSet: sources.join(', '),
 	}
 }
-
-export type ImageProps = ComponentProps<'img'>

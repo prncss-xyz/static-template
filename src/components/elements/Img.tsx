@@ -1,6 +1,7 @@
 import { create, props } from '@stylexjs/stylex'
 
-import { getResponsiveImage } from '@/getResponsiveImage'
+import { getResponsiveImage } from '@/images/getResponsiveImage'
+import { OptImage } from '@/images/OptImage'
 
 import { ElemProps } from './types'
 
@@ -10,10 +11,15 @@ const styles = create({
 	},
 })
 
-export async function Img({ alt, src, style, ...rest }: ElemProps<'img'>) {
+export async function Img({
+	alt,
+	src,
+	style,
+	...rest
+}: ElemProps<'div'> & ElemProps<'img'>) {
 	if (src) {
-		const imgProps = await getResponsiveImage(src, alt)
-		return <img {...rest} {...imgProps} {...props(styles.base, style)} />
+		const image = await getResponsiveImage(src, alt)
+		return <OptImage image={image} {...rest} {...props(styles.base, style)} />
 	}
 	return <img {...rest} {...props(styles.base, style)} />
 }

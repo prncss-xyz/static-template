@@ -1,11 +1,12 @@
 'use client'
 import { Button } from '@base-ui/react'
-import { create, props } from '@stylexjs/stylex'
+import { create } from '@stylexjs/stylex'
 import { useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
 import { fontSizes } from '@/components/tokens.stylex'
-import { ImageProps } from '@/getResponsiveImage'
+import { ResponsiveImage } from '@/images/getResponsiveImage'
+import { OptImage } from '@/images/OptImage'
 
 import { Col, Row } from '../Box'
 
@@ -19,13 +20,13 @@ const styles = create({
 		fontSize: fontSizes[3],
 	},
 	image: {
-		maxHeight: '50vh',
+		height: '50vw',
 		objectFit: 'contain',
-		width: '75vw',
+		width: '50vh',
 	},
 })
 
-export function Carousel({ images }: { images: ImageProps[] }) {
+export function Carousel({ images }: { images: ResponsiveImage[] }) {
 	const [index, setIndex] = useState(0)
 	if (images.length === 0) return null
 	const move = (delta: number) => (last: number) => {
@@ -34,6 +35,8 @@ export function Carousel({ images }: { images: ImageProps[] }) {
 		if (next >= images.length) return next - images.length
 		return next
 	}
+	const image = images[index]
+	if (!image) throw new Error('No image')
 
 	const many = images.length > 1
 	return (
@@ -44,7 +47,9 @@ export function Carousel({ images }: { images: ImageProps[] }) {
 						<FaChevronLeft style={{ color: 'white' }} />
 					</Button>
 				)}
-				<img {...images[index]} {...props(styles.image)} />
+				<div>
+					<OptImage image={image} style={styles.image} />
+				</div>
 				{many && (
 					<Button onClick={() => setIndex(move(1))}>
 						<FaChevronRight />

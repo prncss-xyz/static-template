@@ -5,7 +5,7 @@ import { H2 } from '@/components/elements/Heading'
 import { MD } from '@/components/MD'
 import { Carousel } from '@/components/pageTemplate/Carousel'
 import { getArticles } from '@/data/queries/articles'
-import { ImageProps } from '@/getResponsiveImage'
+import { ResponsiveImage } from '@/images/getResponsiveImage'
 
 function Article({
 	contents,
@@ -13,7 +13,7 @@ function Article({
 	title,
 }: {
 	contents: string
-	images: ImageProps[]
+	images: ResponsiveImage[]
 	title: string
 }) {
 	return (
