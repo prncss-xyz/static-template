@@ -1,7 +1,9 @@
 # TODO
 
 - style tweaks
-- CI
+  - p in markdown (margins);
+  - vertical gaps
+- caching
 
 ## Subsetting fonts
 

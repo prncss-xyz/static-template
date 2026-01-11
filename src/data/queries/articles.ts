@@ -1,8 +1,6 @@
 import slugify from '@sindresorhus/slugify'
 import z from 'zod'
 
-import { getResponsiveImage } from '@/images/getResponsiveImage'
-
 import { airtable } from '../airtable'
 import { site } from './site'
 
@@ -21,13 +19,10 @@ const schema = z
 						Title: z.string().default(''),
 					})
 					.transform(async ({ Contents, Images, Title }) => {
-						const images = await Promise.all(
-							Images.map((url) => getResponsiveImage(url, Title)),
-						)
 						const slug = slugify(Title)
 						return {
 							contents: Contents,
-							images,
+							images: Images,
 							slug: slug === home ? '' : slug,
 							title: Title,
 						}

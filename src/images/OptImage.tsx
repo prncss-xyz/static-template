@@ -15,7 +15,6 @@ const styles = create({
 	},
 	invisible: {
 		opacity: 0,
-		transition: 'opacity 0.5s linear',
 	},
 	overlay: {
 		height: '100%',
@@ -32,27 +31,30 @@ export function OptImage({
 	style?: StyleXStyles
 }) {
 	const [loaded, setLoaded] = useState(false)
-	const imgRef = useRef<any>(null)
+	const imgRef = useRef<HTMLImageElement>(null)
 	useEffect(() => {
-		if (imgRef.current?.complete) {
-			setLoaded(true)
-		}
+		if (imgRef.current?.complete) setLoaded(true)
 	}, [])
 	return (
-		<div {...rest} {...props(style, styles.container)}>
+		<div {...rest} {...props(styles.container)}>
 			<img
 				alt={alt}
 				onLoad={() => setLoaded(true)}
 				ref={imgRef}
 				src={src}
 				srcSet={srcSet}
-				{...props(styles.content, !loaded && styles.invisible)}
+				{...props(style, styles.content, !loaded && styles.invisible)}
 			/>
 			<img
 				alt=''
 				aria-hidden='true'
 				src={placeholder}
-				{...props(styles.content, styles.overlay, loaded && styles.invisible)}
+				{...props(
+					style,
+					styles.content,
+					styles.overlay,
+					loaded && styles.invisible,
+				)}
 			/>
 		</div>
 	)
