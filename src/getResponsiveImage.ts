@@ -5,8 +5,8 @@ import sharp from 'sharp'
 
 import { basePath } from '../basePath'
 
-const ASSET_DIR = './public'
-const CACHE_DIR = '/gen'
+const ASSET_DIR = './public/'
+const CACHE_DIR = 'gen'
 const prefix = basePath + CACHE_DIR
 
 async function getHash(input: string): Promise<string> {
