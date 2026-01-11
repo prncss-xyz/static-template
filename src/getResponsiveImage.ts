@@ -3,8 +3,11 @@ import path from 'node:path'
 import { ComponentProps } from 'react'
 import sharp from 'sharp'
 
+import { basePath } from '../basePath'
+
 const ASSET_DIR = './public'
 const CACHE_DIR = '/gen'
+const prefix = basePath + CACHE_DIR
 
 async function getHash(input: string): Promise<string> {
 	const msgUint8 = new TextEncoder().encode(input)
@@ -36,13 +39,13 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 			} catch {
 				await sharp(buffer).resize(w).webp().toFile(outputPath)
 			}
-			return `${CACHE_DIR}/${name} ${w}w`
+			return `${prefix}/${name} ${w}w`
 		}),
 	)
 
 	return {
 		alt,
-		src: `${CACHE_DIR}/${fileName}-1024.webp`,
+		src: `${prefix}/${fileName}-1024.webp`,
 		srcSet: sources.join(', '),
 	}
 }
