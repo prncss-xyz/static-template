@@ -30,8 +30,8 @@ const styles = create({
 		fontSize: fontSizes[3],
 	},
 	image: {
-		maxHeight: '50vh',
-		maxWidth: '50vw',
+		maxHeight: '70vh',
+		maxWidth: 'min(70vw, 40ch)',
 		objectFit: 'contain',
 	},
 	invisible: {

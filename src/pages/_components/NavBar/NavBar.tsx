@@ -30,8 +30,7 @@ function Nav({
 
 const styles = create({
 	bar: {
-		paddingBottom: '10em',
-		paddingTop: '1em',
+		padding: '1em',
 	},
 })
 

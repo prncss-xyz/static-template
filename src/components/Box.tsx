@@ -70,6 +70,9 @@ const pVariants = create({
 	3: { padding: spaces[3] },
 	4: { padding: spaces[4] },
 	5: { padding: spaces[5] },
+	6: { padding: spaces[6] },
+	7: { padding: spaces[7] },
+	8: { padding: spaces[8] },
 })
 
 const pxVariants = create({
@@ -78,20 +81,32 @@ const pxVariants = create({
 		paddingRight: spaces[1],
 	},
 	2: {
-		paddingLeft: spaces[1],
-		paddingRight: spaces[1],
+		paddingLeft: spaces[2],
+		paddingRight: spaces[2],
 	},
 	3: {
-		paddingLeft: spaces[1],
-		paddingRight: spaces[1],
+		paddingLeft: spaces[3],
+		paddingRight: spaces[3],
 	},
 	4: {
-		paddingLeft: spaces[1],
-		paddingRight: spaces[1],
+		paddingLeft: spaces[4],
+		paddingRight: spaces[4],
 	},
 	5: {
-		paddingLeft: spaces[1],
-		paddingRight: spaces[1],
+		paddingLeft: spaces[5],
+		paddingRight: spaces[5],
+	},
+	6: {
+		paddingLeft: spaces[6],
+		paddingRight: spaces[6],
+	},
+	7: {
+		paddingLeft: spaces[7],
+		paddingRight: spaces[7],
+	},
+	8: {
+		paddingLeft: spaces[8],
+		paddingRight: spaces[8],
 	},
 })
 
@@ -101,20 +116,32 @@ const pyVariants = create({
 		paddingTop: spaces[1],
 	},
 	2: {
-		paddingBottom: spaces[1],
-		paddingTop: spaces[1],
+		paddingBottom: spaces[2],
+		paddingTop: spaces[2],
 	},
 	3: {
-		paddingBottom: spaces[1],
-		paddingTop: spaces[1],
+		paddingBottom: spaces[3],
+		paddingTop: spaces[3],
 	},
 	4: {
-		paddingBottom: spaces[1],
-		paddingTop: spaces[1],
+		paddingBottom: spaces[4],
+		paddingTop: spaces[4],
 	},
 	5: {
-		paddingBottom: spaces[1],
-		paddingTop: spaces[1],
+		paddingBottom: spaces[5],
+		paddingTop: spaces[5],
+	},
+	6: {
+		paddingBottom: spaces[6],
+		paddingTop: spaces[6],
+	},
+	7: {
+		paddingBottom: spaces[7],
+		paddingTop: spaces[7],
+	},
+	8: {
+		paddingBottom: spaces[8],
+		paddingTop: spaces[8],
 	},
 })
 
@@ -124,6 +151,9 @@ const gapVariants = create({
 	3: { gap: spaces[3] },
 	4: { gap: spaces[4] },
 	5: { gap: spaces[5] },
+	6: { gap: spaces[6] },
+	7: { gap: spaces[7] },
+	8: { gap: spaces[8] },
 })
 
 export type BoxBaseProps<E extends React.ElementType = React.ElementType> = {

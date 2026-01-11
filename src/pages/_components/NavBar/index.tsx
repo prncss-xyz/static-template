@@ -6,22 +6,25 @@ import { Data } from './data'
 import { NavBar } from './NavBar'
 import { NavOverlay } from './NavOverlay'
 
-const SMALL = '@media (max-width: 650px)'
+const MEDIUM = '@media (min-width: 650px)'
 
 const styles = create({
 	base: {
+		backgroundColor: 'black',
 		fontWeight: 600,
+		position: 'sticky',
+		top: 0,
 	},
 	md: {
 		display: {
-			default: 'none',
-			[SMALL]: 'block',
+			default: 'block',
+			[MEDIUM]: 'none',
 		},
 	},
 	sm: {
 		display: {
-			default: 'block',
-			[SMALL]: 'none',
+			default: 'none',
+			[MEDIUM]: 'block',
 		},
 	},
 })

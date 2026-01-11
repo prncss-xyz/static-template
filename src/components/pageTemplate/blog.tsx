@@ -6,6 +6,8 @@ import { MD } from '@/components/MD'
 import { Carousel } from '@/components/pageTemplate/Carousel'
 import { getArticles } from '@/data/queries/articles'
 
+import { spaces } from '../tokens.stylex'
+
 function Article({
 	contents,
 	images,
@@ -24,8 +26,14 @@ function Article({
 	)
 }
 
+const MEDIUM = '@media (min-width: 650px)'
+
 const styles = create({
 	readable: {
+		gap: {
+      default: spaces[7],
+      [MEDIUM]: spaces[8],
+    },
 		maxWidth: '60ch',
 	},
 })
@@ -33,7 +41,7 @@ const styles = create({
 export async function Articles() {
 	const data = await getArticles()
 	return (
-		<Col gap={3} style={styles.readable}>
+		<Col gap={8} style={styles.readable}>
 			{data.map((content) => (
 				<Article {...content} key={content.title} />
 			))}

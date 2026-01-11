@@ -1,9 +1,7 @@
 # TODO
 
-- style tweaks
-  - p in markdown (margins);
-  - vertical gaps
 - caching
+- section ordering
 
 ## Subsetting fonts
 

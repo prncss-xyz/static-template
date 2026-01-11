@@ -12,6 +12,9 @@ import { fontFamilies, fontSizes } from '@/components/tokens.stylex'
 import { Data, Entry } from './data'
 
 const styles = create({
+	close: {
+		alignSelf: 'flex-end',
+	},
 	full: {
 		bottom: 0,
 		left: 0,
@@ -23,15 +26,10 @@ const styles = create({
 		fontFamily: fontFamilies.heading,
 		fontSize: fontSizes[5],
 		fontWeight: 'bold',
+		textAlign: 'center',
 	},
 	nav: {
 		textAlign: 'center',
-	},
-	top: {
-		left: 0,
-		position: 'absolute',
-		right: 0,
-		top: 0,
 	},
 })
 
@@ -68,48 +66,40 @@ export function NavOverlay({
 	style?: StyleXStyles
 }) {
 	const { path } = useRouter()
-	const current = data.entries.find((entry) => entry.to === path)
-	const title = current?.title ?? data.title
 	const [open, setOpen] = useState(false)
 	const close = () => setOpen(false)
 	return (
 		<Dialog.Root onOpenChange={setOpen} open={open}>
 			<Row
 				as={Dialog.Trigger}
-				justify='between'
+				justify='end'
 				p={4}
 				size='fullWidth'
 				style={[colorStyles.direct, style]}
 			>
-				<h2 {...props(styles.h2)}>{title}</h2>
 				<FaBars size={24} {...props(colorStyles.direct)} />
 			</Row>
 			<Dialog.Portal>
 				<Dialog.Popup {...props(colorStyles.direct)}>
 					<Dialog.Backdrop {...props(styles.full, colorStyles.direct)} />
 					<div {...props(styles.full)}>
-						<Col justify='center' size='fullHeight'>
-							{data.entries.map((entry) => (
-								<Nav
-									active={entry.to === path}
-									entry={entry}
-									key={entry.to}
-									onClick={close}
-								/>
-							))}
-						</Col>
-					</div>
-					<div {...props(styles.top)}>
-						<Col>
-							<Row
-								as={Dialog.Close}
-								justify='between'
-								p={4}
-								style={colorStyles.direct}
-							>
+						<Col justify='between' size='fullHeight'>
+							<Col gap={4} p={4} style={colorStyles.direct}>
+								<Dialog.Close {...props(styles.close)}>
+									<IoClose size={32} />
+								</Dialog.Close>
 								<Dialog.Title {...props(styles.h2)}>{data.title}</Dialog.Title>
-								<IoClose size={32} {...props(colorStyles.direct)} />
-							</Row>
+							</Col>
+							<Col justify='center' size='fullHeight'>
+								{data.entries.map((entry) => (
+									<Nav
+										active={entry.to === path}
+										entry={entry}
+										key={entry.to}
+										onClick={close}
+									/>
+								))}
+							</Col>
 						</Col>
 					</div>
 				</Dialog.Popup>

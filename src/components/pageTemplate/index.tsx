@@ -9,9 +9,15 @@ import { site } from '@/data/queries/site'
 import { Articles } from './blog'
 import { Carousel } from './Carousel'
 
+const MEDIUM = '@media (min-width: 650px)'
+
 const styles = create({
 	readable: {
 		maxWidth: '60ch',
+		paddingTop: {
+      default: '3em',
+      [MEDIUM]: '10em',
+    },
 	},
 })
 

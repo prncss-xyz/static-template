@@ -20,7 +20,7 @@ export default async function Layout({
 		<BaseLayout>
 			<Navigation data={data} />
 			<title>{data.title}</title>
-			<Col align='center' as='main'>
+			<Col align='center' as='main' p={4}>
 				{children}
 			</Col>
 		</BaseLayout>
