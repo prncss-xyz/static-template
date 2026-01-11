@@ -11,6 +11,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
 	basePath,
 	vite: {
+		build: {
+			rollupOptions: {
+				external: ['sharp'],
+			},
+		},
 		define: {
 			'import.meta.vitest': 'undefined',
 		},
@@ -34,11 +39,6 @@ export default defineConfig({
 		resolve: {
 			alias: {
 				'@': path.resolve(__dirname, './src'),
-			},
-		},
-		build: {
-			rollupOptions: {
-				external: ['sharp'],
 			},
 		},
 		ssr: {
