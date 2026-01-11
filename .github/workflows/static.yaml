@@ -43,8 +43,9 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          VITE_AIRTABLE_TOKEN: ${{ secrets.VITE_AIRTABLE_TOKEN }}
+          AIRTABLE_TOKEN: ${{ secrets.AIRTABLE_TOKEN }}
+          VITE_BASE_URL: ${{ steps.pages.outputs.base_url }}
+          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact

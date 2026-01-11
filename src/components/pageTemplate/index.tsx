@@ -15,9 +15,9 @@ const styles = create({
 	readable: {
 		maxWidth: '60ch',
 		paddingTop: {
-      default: '3em',
-      [MEDIUM]: '10em',
-    },
+			default: '3em',
+			[MEDIUM]: '10em',
+		},
 	},
 })
 

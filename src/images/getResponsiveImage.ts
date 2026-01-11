@@ -2,8 +2,9 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import sharp from 'sharp'
 
+import { basePath } from '@/basePath'
+
 // TODO: cache images
-import { basePath } from '../../basePath'
 
 const { dest, prefix } =
 	process.env.NODE_ENV === 'development'

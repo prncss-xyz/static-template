@@ -30,8 +30,9 @@
 				"BASE_PATH",
 				"DEV",
 				"NODE_ENV",
-				"VITE_AIRTABLE_TOKEN",
-				"GITHUB_REPOSITORY"
+				"AIRTABLE_TOKEN",
+				"VITE_BASE_PATH",
+				"VITE_BASE_URL"
 			]
 		},
 		"dev:web": {
@@ -41,8 +42,9 @@
 				"BASE_PATH",
 				"DEV",
 				"NODE_ENV",
-				"VITE_AIRTABLE_TOKEN",
-				"GITHUB_REPOSITORY"
+				"AIRTABLE_TOKEN",
+				"VITE_BASE_PATH",
+				"VITE_BASE_URL"
 			]
 		},
 		"dev:tests": {

@@ -31,9 +31,9 @@ const MEDIUM = '@media (min-width: 650px)'
 const styles = create({
 	readable: {
 		gap: {
-      default: spaces[7],
-      [MEDIUM]: spaces[8],
-    },
+			default: spaces[7],
+			[MEDIUM]: spaces[8],
+		},
 		maxWidth: '60ch',
 	},
 })
