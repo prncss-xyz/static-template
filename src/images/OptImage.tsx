@@ -11,15 +11,12 @@ const styles = create({
 	},
 	content: {
 		gridArea: '1 / 1',
-		objectFit: 'contain',
 	},
-	img: {},
 	invisible: {
-		// opacity: 0,
+		opacity: 0,
 	},
-	overlay: {
-		height: '100%',
-		width: '100%',
+	placeholder: {
+		filter: 'blur(20px)',
 	},
 })
 
@@ -38,16 +35,18 @@ export function OptImage({
 	}, [])
 	return (
 		<div {...rest} {...props(styles.container)}>
-			{
-				<img
-					alt={alt}
-					onLoad={() => setLoaded(true)}
-					ref={imgRef}
-					src={src}
-					srcSet={srcSet}
-					{...props(style, styles.content, !loaded && styles.invisible)}
-				/>
-			}
+			<img
+				alt={alt}
+				onLoad={() => setLoaded(true)}
+				ref={imgRef}
+				src={src}
+				srcSet={srcSet}
+				{...props(
+					style,
+					styles.content,
+					!loaded && styles.invisible,
+				)}
+			/>
 			<img
 				alt=''
 				aria-hidden='true'
@@ -57,9 +56,8 @@ export function OptImage({
 				{...props(
 					style,
 					styles.content,
-					styles.overlay,
 					loaded && styles.invisible,
-					styles.img,
+					styles.placeholder,
 				)}
 			/>
 		</div>

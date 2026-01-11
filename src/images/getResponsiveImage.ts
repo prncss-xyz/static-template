@@ -38,9 +38,10 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	const response = await fetch(remoteUrl)
 	const buffer = Buffer.from(await response.arrayBuffer())
 
+	// TODO: parallelize
+
 	const { height, width } = await sharp(buffer).metadata()
 
-	// TODO: parallelize
 	const tinyBuffer = await sharp(buffer).resize(20).blur().toBuffer()
 	const placeholder = `data:image/png;base64,${tinyBuffer.toString('base64')}`
 
