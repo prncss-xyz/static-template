@@ -22,7 +22,6 @@ export const fontSizes = defineVars({
 	6: '2rem',
 })
 
-// TODO:
 export const spaces = defineVars({
 	1: '1px',
 	2: '2px',

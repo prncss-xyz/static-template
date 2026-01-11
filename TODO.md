@@ -1,6 +1,8 @@
 # TODO
 
-- caching
+- heading: padding after
+- reusable breakpoints
+- cache images
 - section ordering
 
 ## Subsetting fonts
