@@ -4,7 +4,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'waku/config'
 
-export const basePath = (import.meta.env.VITE_BASE_PATH ?? '') + '/'
+import { basePath } from './src/basePath'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({

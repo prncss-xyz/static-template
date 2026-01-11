@@ -2,8 +2,6 @@
 
 import { create, props } from '@stylexjs/stylex'
 
-import { basePath, baseUrl } from '@/basePath'
-
 import { Data } from './data'
 import { NavBar } from './NavBar'
 import { NavOverlay } from './NavOverlay'
@@ -32,11 +30,6 @@ const styles = create({
 })
 
 export function Navigation({ data }: { data: Data }) {
-	// eslint-disable-next-line no-console
-	console.log({
-		basePath,
-		baseUrl,
-	})
 	return (
 		<>
 			<div {...props(styles.md, styles.base)}>

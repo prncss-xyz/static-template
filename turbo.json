@@ -1,55 +1,73 @@
 {
-	"$schema": "https://turborepo.com/schema.json",
-	"tasks": {
-		"check:tests": {
-			"outputs": ["coverage/**"]
-		},
-		"check:types": {},
-		"check:prettier": {},
-		"check:eslint": {},
-		"fix:prettier": {},
-		"fix:eslint": {},
-		"fix": {
-			"dependsOn": ["fix:prettier", "fix:eslint"]
-		},
-		"nofix": {
-			"dependsOn": ["nofix:prettier", "nofix:eslint"]
-		},
-		"check": {
-			"dependsOn": ["check:types", "check:tests", "build"]
-		},
-		"check-fix": {
-			"dependsOn": ["check", "fix"]
-		},
-		"check-nofix": {
-			"dependsOn": ["check", "nofix"]
-		},
-		"build": {
-			"outputs": ["dist"],
-			"env": [
-				"BASE_PATH",
-				"DEV",
-				"NODE_ENV",
-				"AIRTABLE_TOKEN",
-				"VITE_BASE_PATH",
-				"VITE_BASE_URL"
-			]
-		},
-		"dev:web": {
-			"persistent": true,
-			"cache": false,
-			"env": [
-				"BASE_PATH",
-				"DEV",
-				"NODE_ENV",
-				"AIRTABLE_TOKEN",
-				"VITE_BASE_PATH",
-				"VITE_BASE_URL"
-			]
-		},
-		"dev:tests": {
-			"persistent": true,
-			"cache": false
-		}
-	}
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "check:tests": {
+      "outputs": [
+        "coverage/**"
+      ]
+    },
+    "check:types": {},
+    "check:prettier": {},
+    "check:eslint": {},
+    "fix:prettier": {},
+    "fix:eslint": {},
+    "fix": {
+      "dependsOn": [
+        "fix:prettier",
+        "fix:eslint"
+      ]
+    },
+    "nofix": {
+      "dependsOn": [
+        "nofix:prettier",
+        "nofix:eslint"
+      ]
+    },
+    "check": {
+      "dependsOn": [
+        "check:types",
+        "check:tests",
+        "build"
+      ]
+    },
+    "check-fix": {
+      "dependsOn": [
+        "check",
+        "fix"
+      ]
+    },
+    "check-nofix": {
+      "dependsOn": [
+        "check",
+        "nofix"
+      ]
+    },
+    "build": {
+      "outputs": [
+        "dist"
+      ],
+      "env": [
+        "BASE_PATH",
+        "DEV",
+        "NODE_ENV",
+        "AIRTABLE_TOKEN",
+        "VITE_GITHUB_REPOSITORY"
+      ]
+    },
+    "dev:web": {
+      "persistent": true,
+      "cache": false,
+      "env": [
+        "BASE_PATH",
+        "DEV",
+        "NODE_ENV",
+        "AIRTABLE_TOKEN",
+        "VITE_GITHUB_REPOSITORY"
+      ]
+    },
+    "dev:tests": {
+      "persistent": true,
+      "cache": false
+    }
+  }
 }
