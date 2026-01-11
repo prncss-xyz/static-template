@@ -5,9 +5,7 @@ import sharp from 'sharp'
 
 import { basePath } from '../basePath'
 
-const ASSET_DIR = './public/'
-const CACHE_DIR = 'gen'
-const prefix = basePath + CACHE_DIR
+const dest = './dist/public/'
 
 async function getHash(input: string): Promise<string> {
 	const msgUint8 = new TextEncoder().encode(input)
@@ -19,10 +17,9 @@ async function getHash(input: string): Promise<string> {
 		.slice(0, 12)
 }
 
-const dir = ASSET_DIR + CACHE_DIR
 export async function getResponsiveImage(remoteUrl: string, alt?: string) {
-	await fs.mkdir(dir, { recursive: true })
-	const fileName = await getHash(remoteUrl)
+	await fs.mkdir(dest, { recursive: true })
+	const hash = await getHash(remoteUrl)
 
 	const widths = [640, 1024, 1920]
 	const response = await fetch(remoteUrl)
@@ -30,22 +27,21 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 
 	const sources = await Promise.all(
 		widths.map(async (w) => {
-			const name = `${fileName}-${w}.webp`
-			const outputPath = path.join(dir, name)
-
+			const name = `${hash}-${w}.webp`
+			const outputPath = path.join(dest, name)
 			// Only process if it doesn't exist to speed up builds
 			try {
 				await fs.stat(outputPath)
 			} catch {
 				await sharp(buffer).resize(w).webp().toFile(outputPath)
 			}
-			return `${prefix}/${name} ${w}w`
+			return `${basePath}${name} ${w}w`
 		}),
 	)
 
 	return {
 		alt,
-		src: `${prefix}/${fileName}-1024.webp`,
+		src: `${basePath}${hash}-1024.webp`,
 		srcSet: sources.join(', '),
 	}
 }
