@@ -20,7 +20,7 @@ function Article({
 	return (
 		<div>
 			<H2>{title}</H2>
-			<Carousel images={images} />
+			<Carousel alt={title} images={images} />
 			<MD>{contents}</MD>
 		</div>
 	)
@@ -31,17 +31,18 @@ const MEDIUM = '@media (min-width: 650px)'
 const styles = create({
 	readable: {
 		gap: {
-			default: spaces[7],
-			[MEDIUM]: spaces[8],
+			default: spaces[6],
+			[MEDIUM]: spaces[7],
 		},
 		maxWidth: '60ch',
+		textAlign: 'center',
 	},
 })
 
 export async function Articles() {
 	const data = await getArticles()
 	return (
-		<Col gap={8} style={styles.readable}>
+		<Col style={styles.readable}>
 			{data.map((content) => (
 				<Article {...content} key={content.title} />
 			))}

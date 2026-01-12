@@ -6,7 +6,7 @@ export async function Carousel({
 	alt,
 	images,
 }: {
-	alt?: string
+	alt: string
 	images: string[]
 }) {
 	const respImages = await Promise.all(

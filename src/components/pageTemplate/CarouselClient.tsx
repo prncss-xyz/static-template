@@ -30,7 +30,8 @@ const styles = create({
 		fontSize: fontSizes[3],
 	},
 	image: {
-		maxHeight: '70vh',
+		height: 'auto',
+		maxHeight: '80vh',
 		maxWidth: 'min(70vw, 40ch)',
 		objectFit: 'contain',
 	},
@@ -53,10 +54,14 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 
 	const many = images.length > 1
 	return (
-		<Col align='center' gap={5}>
+		<Col align='center' gap={2}>
 			<Row align='center' gap={4}>
 				{many && (
-					<Button onClick={() => setIndex(move(-1))} {...props(styles.button)}>
+					<Button
+						aria-label='Previous image'
+						onClick={() => setIndex(move(-1))}
+						{...props(styles.button)}
+					>
 						<FaChevronLeft style={{ color: 'white' }} />
 					</Button>
 				)}
@@ -71,7 +76,11 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 					))}
 				</div>
 				{many && (
-					<Button onClick={() => setIndex(move(1))} {...props(styles.button)}>
+					<Button
+						aria-label='Next image'
+						onClick={() => setIndex(move(1))}
+						{...props(styles.button)}
+					>
 						<FaChevronRight />
 					</Button>
 				)}
@@ -79,7 +88,7 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 			{many && (
 				<Row style={styles.icon}>
 					{images.map((_, i) => (
-						<Button key={i} onClick={() => setIndex(i)}>
+						<Button aria-hidden='true' key={i} onClick={() => setIndex(i)}>
 							{i === index ? symbols.disc : symbols.circle}
 						</Button>
 					))}

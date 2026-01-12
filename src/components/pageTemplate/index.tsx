@@ -26,9 +26,9 @@ const { blog } = site
 export async function PageTemplate({ slug }: { slug: string }) {
 	const { contents, images, title } = await getPage(slug)
 	return (
-		<Col gap={3} style={styles.readable}>
+		<Col style={styles.readable}>
 			<H1>{title}</H1>
-			<Carousel images={images} />
+			<Carousel alt={title} images={images} />
 			<MD>{contents}</MD>
 			{slug === blog && <Articles />}
 		</Col>

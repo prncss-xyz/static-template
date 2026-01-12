@@ -5,7 +5,9 @@ import { airtable } from '../airtable'
 
 const siteSchema = z.object({
 	blog: z.string().transform((s) => slugify(s)),
+	description: z.string(),
 	home: z.string().transform((s) => slugify(s)),
+	lang: z.string(),
 	title: z.string(),
 })
 

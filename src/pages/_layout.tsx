@@ -20,6 +20,7 @@ export default async function Layout({
 		<BaseLayout>
 			<Navigation data={data} />
 			<title>{data.title}</title>
+			<meta content={site.description} name='description' />
 			<Col align='center' as='main' p={4}>
 				{children}
 			</Col>

@@ -4,6 +4,7 @@
 - reusable breakpoints
 - cache images
 - section ordering
+- try this stylex config: https://github.com/wakujs/waku/blob/main/examples/37_css-stylex/waku.config.ts
 
 ## Subsetting fonts
 

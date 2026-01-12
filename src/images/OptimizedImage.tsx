@@ -41,7 +41,7 @@ export function OptimizedImage({
 				{...props(style, styles.content, !loaded && styles.invisible)}
 			/>
 			<img
-				alt=''
+				alt={alt}
 				aria-hidden='true'
 				height={height}
 				src={placeholder}
