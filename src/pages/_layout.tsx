@@ -7,7 +7,7 @@ import { getPages } from '@/data/queries/pages'
 import { site } from '@/data/queries/site'
 
 import { BaseLayout } from './_components/BaseLayout'
-import { Navigation } from './_components/NavBar'
+import { Navigation } from './_components/NavMenu'
 
 export default async function Layout({
 	children,

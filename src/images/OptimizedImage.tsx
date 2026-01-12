@@ -13,7 +13,7 @@ const styles = create({
 		gridArea: '1 / 1',
 	},
 	invisible: {
-		opacity: 0,
+    zIndex: -1,
 	},
 })
 
@@ -34,6 +34,14 @@ export function OptimizedImage({
 		<div {...rest} {...props(styles.container)}>
 			<img
 				alt={alt}
+				aria-hidden='true'
+				height={height}
+				src={placeholder}
+				width={width}
+				{...props(style, styles.content, loaded && styles.invisible)}
+			/>
+			<img
+				alt={alt}
 				height={height}
 				onLoad={() => setLoaded(true)}
 				ref={imgRef}
@@ -41,14 +49,6 @@ export function OptimizedImage({
 				srcSet={srcSet}
 				width={width}
 				{...props(style, styles.content, !loaded && styles.invisible)}
-			/>
-			<img
-				alt={alt}
-				aria-hidden='true'
-				height={height}
-				src={placeholder}
-				width={width}
-				{...props(style, styles.content, loaded && styles.invisible)}
 			/>
 		</div>
 	)

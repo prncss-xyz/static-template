@@ -13,7 +13,9 @@ import { Data, Entry } from './data'
 
 const styles = create({
 	close: {
-		alignSelf: 'flex-end',
+		position: 'absolute',
+		right: 0,
+		top: 0,
 	},
 	full: {
 		bottom: 0,
@@ -70,29 +72,22 @@ export function NavOverlay({
 	const close = () => setOpen(false)
 	return (
 		<Dialog.Root onOpenChange={setOpen} open={open}>
-			<Dialog.Trigger>
-				<Row
-					as={Dialog.Trigger}
-					justify='end'
-					p={4}
-					size='fullWidth'
-					style={[colorStyles.direct, style]}
-				>
-					<FaBars size={24} {...props(colorStyles.direct)} />
-				</Row>
-			</Dialog.Trigger>
+			<Row
+				as={Dialog.Trigger}
+				justify='end'
+				p={4}
+				size='fullSize'
+				style={[colorStyles.direct, style]}
+			>
+				<FaBars size={24} {...props(colorStyles.direct)} />
+			</Row>
 			<Dialog.Portal>
 				<Dialog.Popup {...props(colorStyles.direct)}>
 					<Dialog.Backdrop {...props(styles.full, colorStyles.direct)} />
-					<div {...props(styles.full)}>
-						<Col justify='between' size='fullHeight'>
-							<Col gap={4} p={4} style={colorStyles.direct}>
-								<Dialog.Close {...props(styles.close)}>
-									<IoClose size={32} />
-								</Dialog.Close>
-								<Dialog.Title {...props(styles.h2)}>{data.title}</Dialog.Title>
-							</Col>
-							<Col justify='center' size='fullHeight'>
+					<Col justify='around' size='fullHeight' style={styles.full}>
+						<Col gap={6} justify='center'>
+							<Dialog.Title {...props(styles.h2)}>{data.title}</Dialog.Title>
+							<Col>
 								{data.entries.map((entry) => (
 									<Nav
 										active={entry.to === path}
@@ -103,7 +98,10 @@ export function NavOverlay({
 								))}
 							</Col>
 						</Col>
-					</div>
+					</Col>
+					<Dialog.Close {...props(styles.close)}>
+						<IoClose size={32} />
+					</Dialog.Close>
 				</Dialog.Popup>
 			</Dialog.Portal>
 		</Dialog.Root>
