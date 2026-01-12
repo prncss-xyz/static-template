@@ -13,7 +13,7 @@ const styles = create({
 		gridArea: '1 / 1',
 	},
 	invisible: {
-    zIndex: -1,
+		zIndex: -1,
 	},
 })
 
