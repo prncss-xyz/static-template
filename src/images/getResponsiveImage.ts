@@ -38,26 +38,30 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 	const response = await fetch(remoteUrl)
 	const buffer = Buffer.from(await response.arrayBuffer())
 
-	// TODO: parallelize
+	const s = sharp(buffer)
 
-	const { height, width } = await sharp(buffer).metadata()
-
-	const tinyBuffer = await sharp(buffer).resize(20).blur().webp().toBuffer()
-	const placeholder = `data:image/png;base64,${tinyBuffer.toString('base64')}`
-
-	const sources = await Promise.all(
-		widths.map(async (w) => {
-			const name = `${hash}-${w}.webp`
-			const outputPath = path.join(dest, name)
-			// Only process if it doesn't exist to speed up builds
-			try {
-				await fs.stat(outputPath)
-			} catch {
-				await sharp(buffer).resize(w).webp().toFile(outputPath)
-			}
-			return `${prefix}${name} ${w}w`
-		}),
-	)
+	const [{ height, width }, placeholder, sources] = await Promise.all([
+		s.metadata(),
+		s
+			.resize(20)
+			.blur()
+			.webp()
+			.toBuffer()
+			.then((buffer) => `data:image/png;base64,${buffer.toString('base64')}`),
+		Promise.all(
+			widths.map(async (w) => {
+				const name = `${hash}-${w}.webp`
+				const outputPath = path.join(dest, name)
+				// Only process if it doesn't exist to speed up builds
+				try {
+					await fs.stat(outputPath)
+				} catch {
+					await s.resize(w).webp().toFile(outputPath)
+				}
+				return `${prefix}${name} ${w}w`
+			}),
+		),
+	])
 
 	return {
 		alt,

@@ -70,15 +70,17 @@ export function NavOverlay({
 	const close = () => setOpen(false)
 	return (
 		<Dialog.Root onOpenChange={setOpen} open={open}>
-			<Row
-				as={Dialog.Trigger}
-				justify='end'
-				p={4}
-				size='fullWidth'
-				style={[colorStyles.direct, style]}
-			>
-				<FaBars size={24} {...props(colorStyles.direct)} />
-			</Row>
+			<Dialog.Trigger>
+				<Row
+					as={Dialog.Trigger}
+					justify='end'
+					p={4}
+					size='fullWidth'
+					style={[colorStyles.direct, style]}
+				>
+					<FaBars size={24} {...props(colorStyles.direct)} />
+				</Row>
+			</Dialog.Trigger>
 			<Dialog.Portal>
 				<Dialog.Popup {...props(colorStyles.direct)}>
 					<Dialog.Backdrop {...props(styles.full, colorStyles.direct)} />

@@ -54,7 +54,7 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 
 	const many = images.length > 1
 	return (
-		<Col align='center' gap={2}>
+		<Col align='center' gap={2} py={4}>
 			<Row align='center' gap={4}>
 				{many && (
 					<Button

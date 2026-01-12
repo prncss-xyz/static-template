@@ -8,7 +8,7 @@ const styles = create({
 	base: {
 		fontFamily: fontFamilies.heading,
 		fontWeight: 'bold',
-		marginBottom: '0.67lh',
+		marginTop: '0.67lh',
 		textAlign: 'center',
 	},
 })

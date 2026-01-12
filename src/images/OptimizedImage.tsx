@@ -34,10 +34,12 @@ export function OptimizedImage({
 		<div {...rest} {...props(styles.container)}>
 			<img
 				alt={alt}
+				height={height}
 				onLoad={() => setLoaded(true)}
 				ref={imgRef}
 				src={src}
 				srcSet={srcSet}
+				width={width}
 				{...props(style, styles.content, !loaded && styles.invisible)}
 			/>
 			<img
