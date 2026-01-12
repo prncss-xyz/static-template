@@ -15,9 +15,6 @@ const styles = create({
 	invisible: {
 		opacity: 0,
 	},
-	placeholder: {
-		filter: 'blur(20px)',
-	},
 })
 
 export function OptImage({
@@ -41,11 +38,7 @@ export function OptImage({
 				ref={imgRef}
 				src={src}
 				srcSet={srcSet}
-				{...props(
-					style,
-					styles.content,
-					!loaded && styles.invisible,
-				)}
+				{...props(style, styles.content, !loaded && styles.invisible)}
 			/>
 			<img
 				alt=''
@@ -57,7 +50,6 @@ export function OptImage({
 					style,
 					styles.content,
 					loaded && styles.invisible,
-					styles.placeholder,
 				)}
 			/>
 		</div>
