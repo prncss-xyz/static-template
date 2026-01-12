@@ -42,7 +42,7 @@ export async function getResponsiveImage(remoteUrl: string, alt?: string) {
 
 	const { height, width } = await sharp(buffer).metadata()
 
-	const tinyBuffer = await sharp(buffer).resize(20).blur().toBuffer()
+	const tinyBuffer = await sharp(buffer).resize(20).blur().webp().toBuffer()
 	const placeholder = `data:image/png;base64,${tinyBuffer.toString('base64')}`
 
 	const sources = await Promise.all(

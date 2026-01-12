@@ -17,7 +17,7 @@ const styles = create({
 	},
 })
 
-export function OptImage({
+export function OptimizedImage({
 	image: { alt, height, placeholder, src, srcSet, width },
 	style,
 	...rest
@@ -46,11 +46,7 @@ export function OptImage({
 				height={height}
 				src={placeholder}
 				width={width}
-				{...props(
-					style,
-					styles.content,
-					loaded && styles.invisible,
-				)}
+				{...props(style, styles.content, loaded && styles.invisible)}
 			/>
 		</div>
 	)

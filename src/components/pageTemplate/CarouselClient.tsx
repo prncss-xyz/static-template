@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6'
 
 import { fontSizes } from '@/components/tokens.stylex'
 import { ResponsiveImage } from '@/images/getResponsiveImage'
-import { OptImage } from '@/images/OptImage'
+import { OptimizedImage } from '@/images/OptimizedImage'
 
 import { Col, Row } from '../Box'
 
@@ -35,7 +35,7 @@ const styles = create({
 		objectFit: 'contain',
 	},
 	invisible: {
-		visibility: 'hidden',
+		opacity: 0,
 	},
 })
 
@@ -66,7 +66,7 @@ export function CarouselClient({ images }: { images: ResponsiveImage[] }) {
 							key={image.src}
 							{...props(styles.atopContent, i !== index && styles.invisible)}
 						>
-							<OptImage image={image} style={styles.image} />
+							<OptimizedImage image={image} style={styles.image} />
 						</div>
 					))}
 				</div>
