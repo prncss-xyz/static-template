@@ -37,7 +37,9 @@ export const allContents = airtable
 	.base('app1h1sNhPySdTHMO')
 	/* eslint-disable @cspell/spellchecker */
 	.table('tblry9Zngfymy3css')
-	.select()
+	.select({
+		view: 'Grid view',
+	})
 	.all()
 	.then(schema.parseAsync)
 
