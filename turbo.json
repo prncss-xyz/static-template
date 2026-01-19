@@ -1,73 +1,53 @@
 {
-  "$schema": "https://turborepo.com/schema.json",
-  "tasks": {
-    "check:tests": {
-      "outputs": [
-        "coverage/**"
-      ]
-    },
-    "check:types": {},
-    "check:prettier": {},
-    "check:eslint": {},
-    "fix:prettier": {},
-    "fix:eslint": {},
-    "fix": {
-      "dependsOn": [
-        "fix:prettier",
-        "fix:eslint"
-      ]
-    },
-    "nofix": {
-      "dependsOn": [
-        "nofix:prettier",
-        "nofix:eslint"
-      ]
-    },
-    "check": {
-      "dependsOn": [
-        "check:types",
-        "check:tests",
-        "build"
-      ]
-    },
-    "check-fix": {
-      "dependsOn": [
-        "check",
-        "fix"
-      ]
-    },
-    "check-nofix": {
-      "dependsOn": [
-        "check",
-        "nofix"
-      ]
-    },
-    "build": {
-      "outputs": [
-        "dist"
-      ],
-      "env": [
-        "DEV",
-        "NODE_ENV",
-        "AIRTABLE_TOKEN",
-        "VITE_BASE_URL",
-        "VITE_BASE_PATH",
-      ]
-    },
-    "dev:web": {
-      "persistent": true,
-      "cache": false,
-      "env": [
-        "DEV",
-        "NODE_ENV",
-        "AIRTABLE_TOKEN",
-        "VITE_BASE_URL",
-        "VITE_BASE_PATH",
-      ]
-    },
-    "dev:tests": {
-      "persistent": true,
-      "cache": false
-    }
-  }
+	"$schema": "https://turborepo.com/schema.json",
+	"tasks": {
+		"check:tests": {
+			"outputs": ["coverage/**"]
+		},
+		"check:types": {},
+		"check:prettier": {},
+		"check:eslint": {},
+		"fix:prettier": {},
+		"fix:eslint": {},
+		"fix": {
+			"dependsOn": ["fix:prettier", "fix:eslint"]
+		},
+		"nofix": {
+			"dependsOn": ["nofix:prettier", "nofix:eslint"]
+		},
+		"check": {
+			"dependsOn": ["check:types", "check:tests", "build"]
+		},
+		"check-fix": {
+			"dependsOn": ["check", "fix"]
+		},
+		"check-nofix": {
+			"dependsOn": ["check", "nofix"]
+		},
+		"build": {
+			"outputs": ["dist"],
+			"env": [
+				"DEV",
+				"NODE_ENV",
+				"AIRTABLE_TOKEN",
+				"VITE_BASE_URL",
+				"VITE_BASE_PATH"
+			]
+		},
+		"dev:web": {
+			"persistent": true,
+			"cache": false,
+			"env": [
+				"DEV",
+				"NODE_ENV",
+				"AIRTABLE_TOKEN",
+				"VITE_BASE_URL",
+				"VITE_BASE_PATH"
+			]
+		},
+		"dev:tests": {
+			"persistent": true,
+			"cache": false
+		}
+	}
 }
