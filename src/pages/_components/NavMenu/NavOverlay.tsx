@@ -13,14 +13,14 @@ import { Data, Entry } from './data'
 
 const styles = create({
 	close: {
-		position: 'absolute',
+		position: 'fixed',
 		right: 0,
 		top: 0,
 	},
 	full: {
 		bottom: 0,
 		left: 0,
-		position: 'absolute',
+		position: 'fixed',
 		right: 0,
 		top: 0,
 	},
