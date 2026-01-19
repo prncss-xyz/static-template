@@ -9,12 +9,15 @@ import type { getConfig as File_IndexIndex_getConfig } from './pages/(index)/ind
 import type { getConfig as File_Slug_getConfig } from './pages/[slug]';
 // prettier-ignore
 import type { getConfig as File_Root_getConfig } from './pages/_root';
+// prettier-ignore
+import type { getConfig as File_Qr_getConfig } from './pages/qr';
 
 // prettier-ignore
 type Page =
 | ({ path: '/' } & GetConfigResponse<typeof File_IndexIndex_getConfig>)
 | ({ path: '/[slug]' } & GetConfigResponse<typeof File_Slug_getConfig>)
-| ({ path: '/_root' } & GetConfigResponse<typeof File_Root_getConfig>);
+| ({ path: '/_root' } & GetConfigResponse<typeof File_Root_getConfig>)
+| ({ path: '/qr' } & GetConfigResponse<typeof File_Qr_getConfig>);
 
 // prettier-ignore
 declare module 'waku/router' {
