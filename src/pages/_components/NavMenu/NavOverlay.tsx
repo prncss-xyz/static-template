@@ -31,6 +31,7 @@ const styles = create({
 		textAlign: 'center',
 	},
 	nav: {
+		opacity: 1,
 		textAlign: 'center',
 	},
 })
