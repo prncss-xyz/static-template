@@ -1,4 +1,4 @@
-import { basePath, baseUrl } from '@/basePath'
+import { baseUrl } from '@/basePath'
 import { Col } from '@/components/Box'
 import { QR } from '@/components/QR'
 import { site } from '@/data/queries/site'
@@ -7,7 +7,7 @@ export default async function HomePage() {
 	return (
 		<Col align='center' gap={7} justify='end' size='fullSize'>
 			<div />
-			<QR href={baseUrl + basePath} name={site.title} />
+			<QR href={baseUrl} name={site.title} />
 		</Col>
 	)
 }
