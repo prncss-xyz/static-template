@@ -19,9 +19,7 @@ export async function QR({ href, name }: { href: string; name: string }) {
 	const src = await qr.toDataURL(href)
 	return (
 		<Col align='center' gap={5}>
-			<a href={href} target='_blank'>
-				<img alt={name} src={src} {...props(styles.qr)} />
-			</a>
+			<img alt={name} src={src} {...props(styles.qr)} />
 			<A href={href} style={styles.legend}>
 				{name}
 			</A>
